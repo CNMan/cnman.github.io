@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PepperFlash</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+  </head>
+ <body>
+  <div class="container">
+    <h1>PepperFlash版本与Chrome版本对照表</h1><br />
+    Chrome从21.x开始集成PepperFlash<br />
+    早期版本根据Adobe Flash Player和Chrome发布日期选择了一些“升级”时的代表，方便“断代”，后期版本会及时更新<br />
+    <br />
+    <h4>两种需求有用：</h4><br />
+    1、有时升级Chrome后新版本Flash Player频繁奔溃reload，需要降低版本<br />
+    2、老版本Flash Player能减少一部分CPU、内存占用和风扇转速<br />
+    鉴于Flash Player更新频繁补漏洞，安全要求高的还是使用最新版本比较好<br />
+    <table class="table table-bordered">
+        <tr>
+         <th>Chrome版本</th>
+         <th>SHA1</th>
+         <th>发布日期</th>
+         <th>PepperFlash版本</th>
+        </tr>
+        <tr>
+         <td>53.0.2785.143_chrome_installer.exe<br />53.0.2785.143_chrome_installer_win64.exe</td>
+         <td>2de80d3f99df382a3c707774607e98e2962d84c0<br />2926c5b7184f2c664897f04dcb31fdccb0b3e924</td>
+         <td>2016/09/29</td>
+         <td>23.0.0.162</td>
+        </tr>
+        <tr>
+         <td>53.0.2785.116_chrome_installer.exe<br />53.0.2785.116_chrome_installer_win64.exe</td>
+         <td>ae323deec0921fff142ea91926e1670e4732c2ff<br />086100d8126713ec122829433920285a50fd6342</td>
+         <td>2016/09/14</td>
+         <td>23.0.0.162</td>
+        </tr>
+        <tr>
+         <td>53.0.2785.113_chrome_installer.exe<br />53.0.2785.113_chrome_installer_win64.exe</td>
+         <td>314e380148d813086a8037a57c2a3e1e8d3eac75<br />c01e9e45b9816d6e75df098c5c84f6f34ac757b5</td>
+         <td>2016/09/13</td>
+         <td>23.0.0.162</td>
+        </tr>
+        <tr>
+         <td>53.0.2785.101_chrome_installer.exe<br />53.0.2785.101_chrome_installer_win64.exe</td>
+         <td>c7606b049d5d2fce84628b9c8be4d949fd45d349<br />06d4272c5349254e7390b5ffe87e41340fd5f50a</td>
+         <td>2016/09/07</td>
+         <td>22.0.0.209</td>
+        </tr>
+        <tr>
+         <td>53.0.2785.89_chrome_installer.exe<br />53.0.2785.89_chrome_installer_win64.exe</td>
+         <td>f8dab3046143401cda69e6ce76b792bf3085cfa4<br />7bf5f0383d2f372e7e550a79cd87a2654c5e2944</td>
+         <td>2016/08/31</td>
+         <td>22.0.0.209</td>
+        </tr>
+        <tr>
+         <td>52.0.2743.116_chrome_installer.exe<br />52.0.2743.116_chrome_installer_win64.exe</td>
+         <td>eb51d20eae93b95095128fcbf865ad54cc439c39<br />2e21b676e914ff8541dd5ab12d100bfd218a3d69</td>
+         <td>2016/08/03</td>
+         <td>22.0.0.209</td>
+        </tr>
+        <tr>
+         <td>52.0.2743.82_chrome_installer.exe<br />52.0.2743.82_chrome_installer_win64.exe</td>
+         <td>0469a2db2b3db4d19603583251559b9028248c80<br />5a07c6ac61fd898d67facef5d93e2a4ef6709ae9</td>
+         <td>2016/07/20</td>
+         <td>22.0.0.209</td>
+        </tr>
+        <tr>
+         <td>51.0.2704.106_chrome_installer.exe<br />51.0.2704.106_chrome_installer_win64.exe</td>
+         <td>21f1375a9b6bd28de8dbd73a21c5b149d8082899<br />ac08b7f93a0dcbe724ae58ad887e876b4315e0d5</td>
+         <td>2016/06/23</td>
+         <td>22.0.0.192</td>
+        </tr>
+        <tr>
+         <td>51.0.2704.103_chrome_installer.exe<br />51.0.2704.103_chrome_installer_win64.exe</td>
+         <td>171c5f76040ed0e80f589855b499fd18a441b678<br />029609cf443f8b3be07676b3889dd17e4c349770</td>
+         <td>2016/06/16</td>
+         <td>22.0.0.192</td>
+        </tr>
+        <tr>
+         <td>51.0.2704.84_chrome_installer.exe<br />51.0.2704.84_chrome_installer_win64.exe</td>
+         <td>ebb7a585520203b0ef1ef95a0e1aa55ee26d5e99<br />fb11a08f96f36272cd28c4fd55b839f6ca12943d</td>
+         <td>2016/06/06</td>
+         <td>21.0.0.242</td>
+        </tr>
+        <tr>
+         <td>51.0.2704.79_chrome_installer.exe<br />51.0.2704.79_chrome_installer_win64.exe</td>
+         <td>8c254b19e80fbb58d8faa7b9629a88b8aa596fa3<br />6fb960a59dcdc8b8a57f3e69799dd1140febc611</td>
+         <td>2016/06/01</td>
+         <td>21.0.0.242</td>
+        </tr>
+        <tr>
+         <td>51.0.2704.63_chrome_installer.exe<br />51.0.2704.63_chrome_installer_win64.exe</td>
+         <td>e4c15c8534cc1e506f1a9079a9dcf7b2a43ca62e<br />79a61b5b0adc9bbef03130963f819192e0b15f55</td>
+         <td>2016/05/25</td>
+         <td>21.0.0.242</td>
+        </tr>
+        <tr>
+         <td>50.0.2661.102_chrome_installer.exe<br />50.0.2661.102_chrome_installer_win64.exe</td>
+         <td>21f72e94f80203b5edc02b8133d5f5d8d683c0c7<br />c9202f5f41d2e45ed0592e9de0438fa8592188b1</td>
+         <td>2016/05/11</td>
+         <td>21.0.0.242</td>
+        </tr>
+        <tr>
+         <td>50.0.2661.94_chrome_installer.exe<br />50.0.2661.94_chrome_installer_win64.exe</td>
+         <td>3b8f4d80c52a04a7f52d65e0dd32b4ed26b9aaad<br />82178c37663eb5c6a23f3337e9e2d87534c31391</td>
+         <td>2016/04/28</td>
+         <td>21.0.0.216</td>
+        </tr>
+        <tr>
+         <td>50.0.2661.87_chrome_installer.exe<br />50.0.2661.87_chrome_installer_win64.exe</td>
+         <td>a8efed034da20da9ad3ea8863e00a7f71970ebff<br />f087c7e222940f97cae7ad8b7cec14428e9927ed</td>
+         <td>2016/04/20</td>
+         <td>21.0.0.216</td>
+        </tr>
+        <tr>
+         <td>50.0.2661.75_chrome_installer.exe<br />50.0.2661.75_chrome_installer_win64.exe</td>
+         <td>b5d56d96e2ecdd5d2491d22f797d97f7cdf3a6a7<br />4ac19f431ac163efe4adcf70c147d3cc11a850a1</td>
+         <td>2016/04/13</td>
+         <td>21.0.0.216</td>
+        </tr>
+        <tr>
+         <td>49.0.2623.112_chrome_installer.exe<br />49.0.2623.112_chrome_installer_win64.exe</td>
+         <td>75e1b8f2a36b5027a1073f3bebab0216a62ff087<br />3320b4fd5285eb67a0cbd190da01efefa5d2a2b3</td>
+         <td>2016/04/07</td>
+         <td>21.0.0.213</td>
+        </tr>
+        <tr>
+         <td>49.0.2623.110_chrome_installer.exe<br />49.0.2623.110_chrome_installer_win64.exe</td>
+         <td>e0beff0c2d8b12c03a235ab3ed570a9d4bccb2dc<br />29b5d91a39bba908daf5192f133027a2e399fc37</td>
+         <td>2016/03/28</td>
+         <td>21.0.0.197</td>
+        </tr>
+        <tr>
+         <td>49.0.2623.108_chrome_installer.exe<br />49.0.2623.108_chrome_installer_win64.exe</td>
+         <td>666cac40b6c2e179c2a68929178d69da5255c028<br />6e5cd183ea6d8c0080dbbf0f0dfed7d31b90f326</td>
+         <td>2016/03/24</td>
+         <td>21.0.0.197</td>
+        </tr>
+        <tr>
+         <td>49.0.2623.87_chrome_installer.exe<br />49.0.2623.87_chrome_installer_win64.exe</td>
+         <td>ef2ae8f7f7e80431029cd5cce07338bc0cf13f3a<br />a3fd272febcce25ade31566703b1c2051fc5eb88</td>
+         <td>2016/03/08</td>
+         <td>20.0.0.306</td>
+        </tr>
+        <tr>
+         <td>49.0.2623.75_chrome_installer.exe<br />49.0.2623.75_chrome_installer_win64.exe</td>
+         <td>698471745a21d13311a59b56057ca43d89f3996b<br />f9025cc077037b9329e151963d8a7f34d63af591</td>
+         <td>2016/03/02</td>
+         <td>20.0.0.306</td>
+        </tr>
+        <tr>
+         <td>48.0.2564.116_chrome_installer.exe<br />48.0.2564.116_chrome_installer_win64.exe</td>
+         <td>2c9050407da19e4289b8759aa26e63c54e669e0a<br />f4d6239bec947b39a68981fc9f7f1deeb4e6bccd</td>
+         <td>2016/02/18</td>
+         <td>20.0.0.306</td>
+        </tr>
+        <tr>
+         <td>48.0.2564.109_chrome_installer.exe<br />48.0.2564.109_chrome_installer_win64.exe</td>
+         <td>c25853c0fdad898c9f455375ec56821005eb3432<br />b9c15107994c181eccb4d84f8372d238804ecf72</td>
+         <td>2016/02/09</td>
+         <td>20.0.0.306</td>
+        </tr>
+        <tr>
+         <td>48.0.2564.103_chrome_installer.exe<br />48.0.2564.103_chrome_installer_win64.exe</td>
+         <td>a4cc26935bb4a4e002a3c7718451184d2012bf26<br />45816331a6b2f5325f5305ab77151ce2418827cb</td>
+         <td>2016/02/03</td>
+         <td>20.0.0.286</td>
+        </tr>
+        <tr>
+         <td>48.0.2564.97_chrome_installer.exe<br />48.0.2564.97_chrome_installer_win64.exe</td>
+         <td>e6c56f191ddfd4dc4ee43ca8d5bc0f978cb573b3<br />aa4e392501e0c4b19b96c93ffb66f0d6db4b44f8</td>
+         <td>2016/01/27</td>
+         <td>20.0.0.286</td>
+        </tr>
+        <tr>
+         <td>48.0.2564.82_chrome_installer.exe<br />48.0.2564.82_chrome_installer_win64.exe</td>
+         <td>8a5f0e9a850766ef168b6379acc5ab71047a8eb3<br />e44c913f07aa81da0d2da680a8d93dd02eeab3b5</td>
+         <td>2016/01/20</td>
+         <td>20.0.0.286</td>
+        </tr>
+        <tr>
+         <td>47.0.2526.111_chrome_installer.exe<br />47.0.2526.111_chrome_installer_win64.exe</td>
+         <td>dcc27299f9d661cb66b611a53bc47e199a18ae57<br />5cc89fbe0f4c4c5f0ebaeec77ede4efa9ae4edfb</td>
+         <td>2016/01/13</td>
+         <td>20.0.0.267</td>
+        </tr>
+        <tr>
+         <td>47.0.2526.106_chrome_installer.exe<br />47.0.2526.106_chrome_installer_win64.exe</td>
+         <td>a90d99ec3133ef55547010ec8a1ad707b5a99829<br />d508122632118c7200425c116d7e803ef5e141bc</td>
+         <td>2015/12/15</td>
+         <td>20.0.0.228</td>
+        </tr>
+        <tr>
+         <td>47.0.2526.80_chrome64_installer.exe<br />47.0.2526.80_chrome_installer.exe</td>
+         <td>7324bdcb7229e6272e13dcf08ca6f288888f972a<br />24adb76ab6b0eaac7ff244a2a6d1a60b4be4273d</td>
+         <td>2015/12/08</td>
+         <td>20.0.0.228</td>
+        </tr>
+        <tr>
+         <td>47.0.2526.73_chrome64_installer.exe<br />47.0.2526.73_chrome_installer.exe</td>
+         <td>c98a659b9f3242ecce53a5d0e1109870f130678e<br />a4b7612ea8dfe41716e3c0ccae6e1e145e145e60</td>
+         <td>2015/12/01</td>
+         <td>19,0,0,245</td>
+        </tr>
+        <tr>
+         <td>46.0.2490.86_chrome64_installer.exe<br />46.0.2490.86_chrome_installer.exe</td>
+         <td>e8a070b9880df8f325e53a6795747afeae58a429<br />e3e850576cc9a623064cd76d05c49cf026b18cbd</td>
+         <td>2015/11/10</td>
+         <td>19,0,0,245</td>
+        </tr>
+        <tr>
+         <td>46.0.2490.80_chrome64_installer.exe<br />46.0.2490.80_chrome_installer.exe</td>
+         <td>7e6237a93d8f6831a882ed94b0b3a5dc57fbcd04<br />c90fc7cfb55aeca8c8c4a028702aa5e7c6423fd5</td>
+         <td>2015/10/22</td>
+         <td>19,0,0,226</td>
+        </tr>
+        <tr>
+         <td>46.0.2490.71_chrome64_installer.exe<br />46.0.2490.71_chrome_installer.exe</td>
+         <td>c9e3b2ad2c431ead0daf84858c95f1ac5296c6df<br />ce58de5d7cca78acd126ca3e1ed28fab84d5bd5d</td>
+         <td>2015/10/13</td>
+         <td>19,0,0,207</td>
+        </tr>
+        <tr>
+         <td>45.0.2454.101_chrome_installer.exe</td>
+         <td>7ec61967fce2fec8d667eb26d3c89aebb39b4549</td>
+         <td>2015/09/24</td>
+         <td>19,0,0,185</td>
+        </tr>
+        <tr>
+         <td>45.0.2454.99_chrome_installer.exe</td>
+         <td>31741f77780686121fb7b62449b54f52a02cbd52</td>
+         <td>2015/09/21</td>
+         <td>19,0,0,185</td>
+        </tr>
+        <tr>
+         <td>45.0.2454.93_chrome_installer.exe</td>
+         <td>8aa122f1e988bc31653f47614c97fcfeef8e7e4f</td>
+         <td>2015/09/15</td>
+         <td>18,0,0,232</td>
+        </tr>
+        <tr>
+         <td>45.0.2454.85_chrome_installer.exe</td>
+         <td>935eb2290586358944fdb21452426c3708efc19b</td>
+         <td>2015/09/01</td>
+         <td>18,0,0,232</td>
+        </tr>
+        <tr>
+         <td>44.0.2403.157_chrome_installer.exe</td>
+         <td>1a56e9080ba54e4fe2fb533e28edd7ec7cb16842</td>
+         <td>2015/08/20</td>
+         <td>18,0,0,232</td>
+        </tr>
+        <tr>
+         <td>44.0.2403.155_chrome_installer.exe</td>
+         <td>8f7d64fa91d17385bff04b37aead0cb42dffbce8</td>
+         <td>2015/08/11</td>
+         <td>18,0,0,232</td>
+        </tr>
+        <tr>
+         <td>44.0.2403.130_chrome_installer.exe</td>
+         <td>f3e943f26d7cf7cf7f3c194f97c6ace694ff3ba6</td>
+         <td>2015/08/04</td>
+         <td>18,0,0,209</td>
+        </tr>
+        <tr>
+         <td>44.0.2403.125_chrome_installer.exe</td>
+         <td>be4900b96769cca32079ddb5f0c72d50010b134b</td>
+         <td>2015/07/28</td>
+         <td>18,0,0,209</td>
+        </tr>
+        <tr>
+         <td>44.0.2403.107_chrome_installer.exe</td>
+         <td>72d27cba57b02b321fc8ebc0cbe44e6cbe3e34b9</td>
+         <td>2015/07/24</td>
+         <td>18,0,0,209</td>
+        </tr>
+        <tr>
+         <td>44.0.2403.89_chrome_installer.exe</td>
+         <td>cf73e8abbb17ce0ac8e97ed6c17be539460101df</td>
+         <td>2015/07/21</td>
+         <td>18,0,0,209</td>
+        </tr>
+        <tr>
+         <td>43.0.2357.134_chrome_installer.exe</td>
+         <td>2a81c9464f51108fc1304dbbd17d24f1db5126f1</td>
+         <td>2015/07/14</td>
+         <td>18,0,0,209</td>
+        </tr>
+        <tr>
+         <td>43.0.2357.132_chrome_installer.exe</td>
+         <td>272db4d4012c34d7f60f38f8df5d899ee843a4de</td>
+         <td>2015/07/07</td>
+         <td>18,0,0,203</td>
+        </tr>
+        <tr>
+         <td>43.0.2357.130_chrome_installer.exe</td>
+         <td>6a346a35544af9c777d9289934bf82f351e56c02</td>
+         <td>2015/06/22</td>
+         <td>18,0,0,194</td>
+        </tr>
+        <tr>
+         <td>43.0.2357.124_chrome_installer.exe</td>
+         <td>1f8bab6c92f7a5deac0338559896fbd6edbd1224</td>
+         <td>2015/06/09</td>
+         <td>18,0,0,160</td>
+        </tr>
+        <tr>
+         <td>43.0.2357.81_chrome_installer.exe</td>
+         <td>456db5d2f602a52b032f09af690fa76ddee10dca</td>
+         <td>2015/05/25</td>
+         <td>17,0,0,188(Adobe官方有PPAPI<a href="https://fpdownload.macromedia.com/pub/flashplayer/installers/archive/fp_17.0.0.191_archive.zip">17,0,0,191</a>)</td>
+        </tr>
+        <tr>
+         <td>41.0.2272.89_chrome_installer.exe</td>
+         <td>04aee867968be26ad0b4cdcca848bb85b97f9c04</td>
+         <td>2015/03/10</td>
+         <td>17,0,0,134</td>
+        </tr>
+        <tr>
+         <td>41.0.2272.76_chrome_installer.exe</td>
+         <td>9c2aaa28cdd1f0d50d59c7ac2cf60c87edd25ffe</td>
+         <td>2015/03/03</td>
+         <td>17,0,0,134</td>
+        </tr>
+        <tr>
+         <td>40.0.2214.115_chrome_installer.exe</td>
+         <td>6eea0c3bbaffa0c3d6481178d90c6ddc08f2a347</td>
+         <td>2015/02/19</td>
+         <td>16,0,0,305</td>
+        </tr>
+        <tr>
+         <td>39.0.2171.95_chrome_installer.exe</td>
+         <td>e2d5f9282b60d6328774710bc9b86947e1656093</td>
+         <td>2014/12/09</td>
+         <td>16,0,0,235</td>
+        </tr>
+        <tr>
+         <td>39.0.2171.71_chrome_installer.exe</td>
+         <td>2076015020ba8f64018017e27ee4878c98561078</td>
+         <td>2014/11/25</td>
+         <td>15,0,0,239</td>
+        </tr>
+        <tr>
+         <td>37.0.2062.120_chrome_installer.exe</td>
+         <td>f2e9982d274de5c9e973506d693404dab61ecaff</td>
+         <td>2014/09/09</td>
+         <td>15,0,0,152</td>
+        </tr>
+        <tr>
+         <td>37.0.2062.103_chrome_installer.exe</td>
+         <td>81e317f88d71368c02a21edef2522c0d87e9366d</td>
+         <td>2014/09/02</td>
+         <td>14,0,0,177</td>
+        </tr>
+        <tr>
+         <td>35.0.1916.153_chrome_installer.exe</td>
+         <td>27bd276c2101d4de35e9b2625a13bc7f519e447a</td>
+         <td>2014/06/10</td>
+         <td>14,0,0,125</td>
+        </tr>
+        <tr>
+         <td>35.0.1916.114_chrome_installer.exe</td>
+         <td>0450f881423146c44d2637b0170ecbaaa0995a1d</td>
+         <td>2014/05/20</td>
+         <td>13,0,0,214</td>
+        </tr>
+        <tr>
+         <td>34.0.1847.116_chrome_installer.exe</td>
+         <td>ab12e79aecc4d75955f32dd4f21784ef503d9fa5</td>
+         <td>2014/04/08</td>
+         <td>13,0,0,182</td>
+        </tr>
+        <tr>
+         <td>33.0.1750.154_chrome_installer.exe</td>
+         <td>c5f2499675a56e1ce8d1f21584dede28574ed1fe</td>
+         <td>2014/03/14</td>
+         <td>12,0,0,77</td>
+        </tr>
+        <tr>
+         <td>32.0.1700.76_chrome_installer.exe</td>
+         <td>43b993d4f86a6a955cf0f9d45885426d6aeb7624</td>
+         <td>2014/01/14</td>
+         <td>12,0,0,41</td>
+        </tr>
+        <tr>
+         <td>31.0.1650.63_chrome_installer.exe</td>
+         <td>a022ceeb5523145efbcf50c30426b8f2cec33716</td>
+         <td>2013/12/04</td>
+         <td>11,9,900,170</td>
+        </tr>
+        <tr>
+         <td>30.0.1599.101_chrome_installer.exe</td>
+         <td>49684fdaa273ebbe2527049e4c50cf42675559ce</td>
+         <td>2013/10/15</td>
+         <td>11,9,900,117</td>
+        </tr>
+        <tr>
+         <td>30.0.1599.69_chrome_installer.exe</td>
+         <td>339319328c0f1da0b407964b09d8a3703914ec5b</td>
+         <td>2013/10/03</td>
+         <td>11,8,800,170</td>
+        </tr>
+        <tr>
+         <td>29.0.1547.76_chrome_installer.exe</td>
+         <td>a246c591a35daa64b197153d2cc50024ee384969</td>
+         <td>2013/09/18</td>
+         <td>11,8,800,170</td>
+        </tr>
+        <tr>
+         <td>28.0.1500.95_chrome_installer.exe</td>
+         <td>b277a9f05a938b3a921710c43063eee563e0248b</td>
+         <td>2013/07/30</td>
+         <td>11,8,800,97</td>
+        </tr>
+        <tr>
+         <td>28.0.1500.72_chrome_installer.exe</td>
+         <td></td>
+         <td>2013/07/12</td>
+         <td>11,8,800,97</td>
+        </tr>
+        <tr>
+         <td>28.0.1500.71_chrome_installer.exe</td>
+         <td>3d97b1a6a535a5dfc88c336401b5f893e7923427</td>
+         <td>2013/07/09</td>
+         <td>11,7,700,203(版本倒退？)</td>
+        </tr>
+        <tr>
+         <td>27.0.1453.116_chrome_installer.exe</td>
+         <td>4d8229d48350a9fe34bc17ed144e861b98909f40</td>
+         <td>2013/06/18</td>
+         <td>11,7,700,225</td>
+        </tr>
+        <tr>
+         <td>26.0.1410.64_chrome_installer.exe</td>
+         <td></td>
+         <td>2013/04/09</td>
+         <td>11,7,700,179</td>
+        </tr>
+        <tr>
+         <td>26.0.1410.43_chrome_installer.exe</td>
+         <td>34a64c2f5314fead20573e36f7898f1c00b102c0</td>
+         <td>2013/03/26</td>
+         <td>11,6,602,180</td>
+        </tr>
+        <tr>
+         <td>25.0.1364.172_chrome_installer.exe</td>
+         <td>60ccbf55e8ee1dd441c362c5d136cdd715b4975a</td>
+         <td>2013/03/12</td>
+         <td>11,6,602,180</td>
+        </tr>
+        <tr>
+         <td>25.0.1364.97_chrome_installer.exe</td>
+         <td></td>
+         <td>2013/02/21</td>
+         <td>11,6,602,171</td>
+        </tr>
+        <tr>
+         <td>24.0.1312.57_chrome_installer.exe</td>
+         <td>849b037ec69b033644c78a8481e52f259c5396cc</td>
+         <td>2013/01/30</td>
+         <td>11.5.31.137</td>
+        </tr>
+        <tr>
+         <td>22.0.1229.94_chrome_installer.exe</td>
+         <td>2f93eeb80a7958e92751722a8b6c1dc10d490882</td>
+         <td>2012/10/10</td>
+         <td>11.4.31.110(新版Chrome不能用)</td>
+        </tr>
+        <tr>
+         <td>21.0.1180.79_chrome_installer.exe</td>
+         <td>81a3165e007946de09ad4da94cba107f421a92f5</td>
+         <td>2012/08/14</td>
+         <td>11.3.31.227(新版Chrome不能用)</td>
+        </tr>
+    </table>
+    参考资料：<br />
+    1、<a href="http://googlechromereleases.blogspot.com/">http://googlechromereleases.blogspot.com/</a><br />
+    2、<a href="http://www.geocities.jp/ecvcn/exam/chrome_installer.html">http://www.geocities.jp/ecvcn/exam/chrome_installer.html</a><br />
+    3、<a href="https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html">https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html</a><br />
+    4、<a href="http://www.adobe.com/software/flash/about/">http://www.adobe.com/software/flash/about/</a><br />
+    5、<a href="https://api.shuax.com/tools/getchrome">https://api.shuax.com/tools/getchrome</a><br />
+  </div>
+ </body>
+</html>

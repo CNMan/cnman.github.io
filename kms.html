@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KMS</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+  </head>
+ <body>
+   <div class="container">
+Win Vista/7/8/8.1/10、WinSrv 2008/2008R2/2012/2012R2、Office 2010/2013/2016 KMS Server(因版权投诉而下线)<br />
+<br />
+一、使用限制：<br />
+原则上只能激活VL版（有效期180天），但部分有GVLK的Retail/OEM版也可以激活（有效期180天，个别产品有效期45天）。<br />
+每7天自动连接KMS服务器续期，事实永久，跟用MAK/Retail/OEM KEY激活没两样。<br />
+
+二、使用情景：<br />
+1、纯净安装VL版操作系统和办公软件的直接去看步骤三<br />
+2、改过产品密钥的VL版或Retail/OEM版需要先换成GVLK后才可以使用<br />
+换KEY方法：<br />
+①、Windows/Windows Server系列<br />
+以管理员权限运行CMD:<br />
+<pre>CD /d "C:\Windows\System32"
+CSCRIPT /NOLOGO SLMGR.VBS /IPK XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</pre>
+
+②、Office 2016系列（Office 2010系列把下面命令中的Office16改成Office14即可，Office 2013系列把下面命令中的Office16改成Office15即可）<br />
+以管理员权限运行CMD:<br />
+64位Office：<br />
+<pre>CD /d "C:\Program Files\Microsoft Office\Office16\"
+CSCRIPT OSPP.VBS /INPKEY:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</pre>
+
+32位Office：<br />
+<pre>CD /d "C:\Program Files (x86)\Microsoft Office\Office16\"
+CSCRIPT OSPP.VBS /INPKEY:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</pre>
+<!--
+Windows系列产品 GVLK：https://technet.microsoft.com/en-us/library/jj612867.aspx<br />
+Windows Embedded 8 Industry:https://msdn.microsoft.com/en-us/library/dn195624(v=winembedded.81).aspx<br />
+Windows Embedded 8.1 Industry:https://msdn.microsoft.com/en-us/library/dn449402(v=winembedded.82).aspx<br />
+Office 2013系列产品 GVLK：http://technet.microsoft.com/en-us/library/dn385360.aspx<br />
+Office 2010系列产品 GVLK：http://technet.microsoft.com/en-us/library/ee624355(v=office.14).aspx<br />
+-->
+    <table class="table table-bordered">
+    <tr><th>GVLK</th><th>Product</th></tr>
+    <tr><td>TX9XD-98N7V-6WMQ6-BX7FG-H8Q99</td><td>Windows 10 Core</td></tr>
+    <tr><td>3KHY7-WNT83-DGQKR-F7HPR-844BM</td><td>Windows 10 Core N</td></tr>
+    <tr><td>7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH</td><td>Windows 10 Core Single Language</td></tr>
+    <tr><td>PVMJN-6DFY6-9CCP6-7BKTT-D3WVR</td><td>Windows 10 Core Country Specific</td></tr>
+    <tr><td>W269N-WFGWX-YVC9B-4J6C9-T83GX</td><td>Windows 10 Professional</td></tr>
+    <tr><td>MH37W-N47XK-V7XM9-C7227-GCQG9</td><td>Windows 10 Professional N</td></tr>
+    <tr><td>NPPR9-FWDCX-D2C8J-H872K-2YT43</td><td>Windows 10 Enterprise</td></tr>
+    <tr><td>DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4</td><td>Windows 10 Enterprise N</td></tr>
+    <tr><td>YYVX9-NTFWV-6MDM3-9PT4T-4M68B</td><td>Windows 10 EnterpriseG</td></tr>
+    <tr><td>44RPN-FTY23-9VTTB-MP9BX-T84FV</td><td>Windows 10 EnterpriseG N</td></tr>
+    <tr><td>NW6C2-QMPVW-D7KKK-3GKT6-VCFB2</td><td>Windows 10 Education</td></tr>
+    <tr><td>2WH4N-8QGBV-H22JP-CT43Q-MDWWJ</td><td>Windows 10 Education N</td></tr>
+    <tr><td>6TP4R-GNPTD-KYYHQ-7B7DP-J447Y</td><td>Windows 10 ProfessionalEducation</td></tr>
+    <tr><td>YVWGF-BXNMC-HTQYQ-CPQ99-66QFC</td><td>Windows 10 ProfessionalEducation N</td></tr>
+	<tr><td>NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J</td><td>Windows 10 ProfessionalWorkstation</td></tr>
+	<tr><td>9FNHH-K3HBT-3W4TD-6383H-6XYWF</td><td>Windows 10 ProfessionalWorkstation N</td></tr>
+    <tr><td>WNMTR-4C88C-JK8YV-HQ7T2-76DF9</td><td>Windows 10 Enterprise 2015 LTSB</td></tr>
+    <tr><td>2F77B-TNFGY-69QQF-B8YKP-D69TJ</td><td>Windows 10 Enterprise 2015 LTSB N</td></tr>
+    <tr><td>DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ</td><td>Windows 10 Enterprise 2016 LTSB</td></tr>
+    <tr><td>QFFDN-GRT3P-VKWWX-X7T3R-8B639</td><td>Windows 10 Enterprise 2016 LTSB N</td></tr>
+    <tr><td>2HXDN-KRXHB-GPYC7-YCKFJ-7FVDG</td><td>Windows Server Datacenter, version 1803</td></tr>
+    <tr><td>PTXN8-JFHJM-4WC78-MPCBR-9W4KR</td><td>Windows Server Standard, version 1803</td></tr>
+	<tr><td>6Y6KB-N82V8-D8CQV-23MJW-BWTG6</td><td>Windows Server Datacenter, version 1709</td></tr>
+	<tr><td>DPCNP-XQFKJ-BJF7R-FRC8D-GF6G4</td><td>Windows Server Standard, version 1709</td></tr>
+    <tr><td>WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY</td><td>Windows Server 2016 Standard</td></tr>
+    <tr><td>CB7KF-BWN84-R7R2Y-793K2-8XDDG</td><td>Windows Server 2016 Datacenter</td></tr>
+    <tr><td>JCKRF-N37P4-C2D82-9YXRT-4M63B</td><td>Windows Server 2016 Essentials</td></tr>
+    <tr><td>QN4C6-GBJD2-FB422-GHWJK-GJG2R</td><td>Windows Server 2016 Cloud Storage</td></tr>
+    <tr><td>VP34G-4NPPG-79JTQ-864T4-R3MQX</td><td>Windows Server 2016 AzureCor</td></tr>
+    <tr><td>M9Q9P-WNJJT-6PXPY-DWX8H-6XWKK</td><td>Windows 8.1 Core</td></tr>
+    <tr><td>7B9N3-D94CG-YTVHR-QBPX3-RJP64</td><td>Windows 8.1 Core N</td></tr>
+    <tr><td>BB6NG-PQ82V-VRDPW-8XVD2-V8P66</td><td>Windows 8.1 Core Single Language</td></tr>
+    <tr><td>NCTT7-2RGK8-WMHRF-RY7YQ-JTXG3</td><td>Windows 8.1 Core Country Specific</td></tr>
+    <tr><td>XYTND-K6QKT-K2MRH-66RTM-43JKP</td><td>Windows 8.1 Core ARM</td></tr>
+    <tr><td>GCRJD-8NW9H-F2CDX-CCM8D-9D6T9</td><td>Windows 8.1 Professional</td></tr>
+    <tr><td>HMCNV-VVBFX-7HMBH-CTY9B-B4FXY</td><td>Windows 8.1 Professional N</td></tr>
+    <tr><td>789NJ-TQK6T-6XTH8-J39CJ-J8D3P</td><td>Windows 8.1 Professional WMC</td></tr>
+    <tr><td>MHF9N-XY6XB-WVXMC-BTDCT-MKKG7</td><td>Windows 8.1 Enterprise</td></tr>
+    <tr><td>TT4HM-HN7YT-62K67-RGRQJ-JFFXW</td><td>Windows 8.1 Enterprise N</td></tr>
+    <tr><td>VHXM3-NR6FT-RY6RT-CK882-KW2CJ</td><td>Windows 8.1 Embedded Industry Standard</td></tr>
+    <tr><td>NMMPB-38DD4-R2823-62W8D-VXKJB</td><td>Windows 8.1 Embedded Industry Professional</td></tr>
+    <tr><td>FNFKF-PWTVT-9RC8H-32HB2-JB34X</td><td>Windows 8.1 Embedded Industry Enterprise</td></tr>
+    <tr><td>D2N9P-3P6X9-2R39C-7RTCD-MDVJX</td><td>Windows Server 2012 R2 Standard</td></tr>
+    <tr><td>W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9</td><td>Windows Server 2012 R2 Datacenter</td></tr>
+    <tr><td>KNC87-3J2TX-XB4WP-VCPJV-M4FWM</td><td>Windows Server 2012 R2 Essentials</td></tr>
+    <tr><td>3NPTF-33KPT-GGBPR-YX76B-39KDD</td><td>Windows Server 2012 R2 Cloud Storage</td></tr>
+    <tr><td>BN3D2-R7TKB-3YPBD-8DRP2-27GG4</td><td>Windows 8 Core</td></tr>
+    <tr><td>8N2M2-HWPGY-7PGT9-HGDD8-GVGGY</td><td>Windows 8 Core N</td></tr>
+    <tr><td>2WN2H-YGCQR-KFX6K-CD6TF-84YXQ</td><td>Windows 8 Core Single Language</td></tr>
+    <tr><td>4K36P-JN4VD-GDC6V-KDT89-DYFKP</td><td>Windows 8 Core Country Specific</td></tr>
+    <tr><td>DXHJF-N9KQX-MFPVR-GHGQK-Y7RKV</td><td>Windows 8 Core ARM</td></tr>
+    <tr><td>NG4HW-VH26C-733KW-K6F98-J8CK4</td><td>Windows 8 Professional</td></tr>
+    <tr><td>XCVCF-2NXM9-723PB-MHCB7-2RYQQ</td><td>Windows 8 Professional N</td></tr>
+    <tr><td>GNBB8-YVD74-QJHX6-27H4K-8QHDG</td><td>Windows 8 Professional WMC</td></tr>
+    <tr><td>32JNW-9KQ84-P47T8-D8GGY-CWCK7</td><td>Windows 8 Enterprise</td></tr>
+    <tr><td>JMNMF-RHW7P-DMY6X-RF3DR-X2BQT</td><td>Windows 8 Enterprise N</td></tr>
+    <tr><td>JVPDN-TBWJW-PD94V-QYKJ2-KWYQM</td><td>Windows 8 Embedded Industry Standard</td></tr>
+    <tr><td>RYXVT-BNQG7-VD29F-DBMRY-HT73M</td><td>Windows 8 Embedded Industry Professional</td></tr>
+    <tr><td>NKB3R-R2F8T-3XCDP-7Q2KW-XWYQ2</td><td>Windows 8 Embedded Industry Enterprise</td></tr>
+    <tr><td>XC9B7-NBPP2-83J2H-RHMBY-92BT4</td><td>Windows Server 2012 Standard</td></tr>
+    <tr><td>48HP8-DN98B-MYWDG-T2DCC-8W83P</td><td>Windows Server 2012 Datacenter</td></tr>
+    <tr><td>HM7DN-YVMH3-46JC3-XYTG7-CYQJJ</td><td>Windows Server 2012 MultiPoint Standard</td></tr>
+    <tr><td>XNH6W-2V9GX-RGJ4K-Y8X6F-QGJ2G</td><td>Windows Server 2012 MultiPoint Premium</td></tr>
+    <tr><td>FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4</td><td>Windows 7 Professional</td></tr>
+    <tr><td>MRPKT-YTG23-K7D7T-X2JMM-QY7MG</td><td>Windows 7 Professional N</td></tr>
+    <tr><td>W82YF-2Q76Y-63HXB-FGJG9-GF7QX</td><td>Windows 7 Professional E</td></tr>
+    <tr><td>33PXH-7Y6KF-2VJC9-XBBR8-HVTHH</td><td>Windows 7 Enterprise</td></tr>
+    <tr><td>YDRBP-3D83W-TY26F-D46B2-XCKRJ</td><td>Windows 7 Enterprise N</td></tr>
+    <tr><td>C29WB-22CC8-VJ326-GHFJW-H9DH4</td><td>Windows 7 Enterprise E</td></tr>
+    <tr><td>73KQT-CD9G6-K7TQG-66MRP-CQ22C</td><td>Windows 7 Embedded Thin PC</td></tr>
+    <tr><td>YBYF6-BHCR3-JPKRB-CDW7B-F9BK4</td><td>Windows 7 Embedded POSReady</td></tr>
+    <tr><td>6TPJF-RBVHG-WBW2R-86QPH-6RTM4</td><td>Windows Server 2008 R2 Web</td></tr>
+    <tr><td>TT8MH-CG224-D3D7Q-498W2-9QCTX</td><td>Windows Server 2008 R2 HPC</td></tr>
+    <tr><td>YC6KT-GKW9T-YTKYR-T4X34-R7VHC</td><td>Windows Server 2008 R2 Standard</td></tr>
+    <tr><td>489J6-VHDMP-X63PK-3K798-CPX3Y</td><td>Windows Server 2008 R2 Enterprise</td></tr>
+    <tr><td>74YFP-3QFB3-KQT8W-PMXWJ-7M648</td><td>Windows Server 2008 R2 Datacenter</td></tr>
+    <tr><td>GT63C-RJFQ3-4GMB6-BRFB9-CB83V</td><td>Windows Server 2008 R2 for Itanium-based Systems</td></tr>
+    <tr><td>YFKBB-PQJJV-G996G-VWGXY-2V3X8</td><td>Windows Vista Business</td></tr>
+    <tr><td>HMBQG-8H2RH-C77VX-27R82-VMQBT</td><td>Windows Vista Business N</td></tr>
+    <tr><td>VKK3X-68KWM-X2YGT-QR4M6-4BWMV</td><td>Windows Vista Enterprise</td></tr>
+    <tr><td>VTC42-BM838-43QHV-84HX6-XJXKV</td><td>Windows Vista Enterprise N</td></tr>
+    <tr><td>WYR28-R7TFJ-3X2YQ-YCY4H-M249D</td><td>Windows Server 2008 Web</td></tr>
+    <tr><td>RCTX3-KWVHP-BR6TB-RB6DM-6X7HP</td><td>Windows Server 2008 HPC</td></tr>
+    <tr><td>TM24T-X9RMF-VWXK6-X8JC9-BFGM2</td><td>Windows Server 2008 Standard</td></tr>
+    <tr><td>W7VD6-7JFBR-RX26B-YKQ3Y-6FFFJ</td><td>Windows Server 2008 Standard without Hyper-V</td></tr>
+    <tr><td>YQGMW-MPWTJ-34KDK-48M3W-X4Q6V</td><td>Windows Server 2008 Enterprise</td></tr>
+    <tr><td>39BXF-X8Q23-P2WWT-38T2F-G3FPG</td><td>Windows Server 2008 Enterprise without Hyper-V</td></tr>
+    <tr><td>7M67G-PC374-GR742-YH8V4-TCBY3</td><td>Windows Server 2008 Datacenter</td></tr>
+    <tr><td>22XQ2-VRXRG-P8D42-K34TD-G3QQC</td><td>Windows Server 2008 Datacenter without Hyper-V</td></tr>
+    <tr><td>4DWFP-JF3DJ-B7DTH-78FJB-PDRHK</td><td>Windows Server 2008 for Itanium-Based Systems</td></tr>
+    <tr><td>NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP</td><td>Office Professional Plus 2019</td></tr>
+    <tr><td>6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK</td><td>Office Standard 2019</td></tr>
+    <tr><td>B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B</td><td>Project Professional 2019</td></tr>
+    <tr><td>C4F7P-NCP8C-6CQPT-MQHV9-JXD2M</td><td>Project Standard 2019</td></tr>
+    <tr><td>9BGNQ-K37YR-RQHF2-38RQ3-7VCBB</td><td>Visio Professional 2019</td></tr>
+    <tr><td>7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2</td><td>Visio Standard 2019</td></tr>
+    <tr><td>9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT</td><td>Access 2019</td></tr>
+    <tr><td>TMJWT-YYNMB-3BKTF-644FC-RVXBD</td><td>Excel 2019</td></tr>
+    <tr><td>7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK</td><td>Outlook 2019</td></tr>
+    <tr><td>RRNCX-C64HY-W2MM7-MCH9G-TJHMQ</td><td>PowerPoint 2019</td></tr>
+    <tr><td>G2KWX-3NW6P-PY93R-JXK2T-C9Y9V</td><td>Publisher 2019</td></tr>
+    <tr><td>NCJ33-JHBBY-HTK98-MYCV8-HMKHJ</td><td>Skype for Business 2019</td></tr>
+    <tr><td>PBX3G-NWMT6-Q7XBW-PYJGG-WXD33</td><td>Word 2019</td></tr>
+    <tr><td>XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99</td><td>Office 2016 Professional Plus</td></tr>
+    <tr><td>JNRGM-WHDWX-FJJG3-K47QV-DRTFM</td><td>Office 2016 Standard</td></tr>
+    <tr><td>YG9NW-3K39V-2T3HJ-93F3Q-G83KT</td><td>Project 2016 Professional</td></tr>
+    <tr><td>GNFHQ-F6YQM-KQDGJ-327XX-KQBVC</td><td>Project 2016 Standard</td></tr>
+    <tr><td>PD3PC-RHNGV-FXJ29-8JK7D-RJRJK</td><td>Visio 2016 Professional</td></tr>
+    <tr><td>7WHWN-4T7MP-G96JF-G33KR-W8GF4</td><td>Visio 2016 Standard</td></tr>
+    <tr><td>WGT24-HCNMF-FQ7XH-6M8K7-DRTW9</td><td>Project 2016 Professional(C2R)</td></tr>
+    <tr><td>D8NRQ-JTYM3-7J2DX-646CT-6836M</td><td>Project 2016 Standard(C2R)</td></tr>
+    <tr><td>69WXN-MBYV6-22PQG-3WGHK-RM6XC</td><td>Visio 2016 Professional(C2R)</td></tr>
+    <tr><td>NY48V-PPYYH-3F4PX-XJRKJ-W4423</td><td>Visio 2016 Standard(C2R)</td></tr>
+    <tr><td>GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW</td><td>Access 2016</td></tr>
+    <tr><td>9C2PK-NWTVB-JMPW8-BFT28-7FTBF</td><td>Excel 2016</td></tr>
+    <tr><td>HFTND-W9MK4-8B7MJ-B6C4G-XQBR2</td><td>Mondo 2016</td></tr>
+    <tr><td>869NQ-FJ69K-466HW-QYCP2-DDBV6</td><td>Skype for Business 2016</td></tr>
+    <tr><td>DR92N-9HTF2-97XKM-XW2WJ-XW3J6</td><td>OneNote 2016</td></tr>
+    <tr><td>R69KK-NTPKF-7M3Q4-QYBHW-6MT9B</td><td>Outlook 2016</td></tr>
+    <tr><td>J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6</td><td>PowerPoint 2016</td></tr>
+    <tr><td>F47MM-N3XJP-TQXJ9-BP99D-8K837</td><td>Publisher 2016</td></tr>
+    <tr><td>WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6</td><td>Word 2016</td></tr>
+    <tr><td>YC7DK-G2NP3-2QQC3-J6H88-GVGXT</td><td>Office 2013 Professional Plus</td></tr>
+    <tr><td>KBKQT-2NMXY-JJWGP-M62JB-92CD4</td><td>Office 2013 Standard</td></tr>
+    <tr><td>FN8TT-7WMH6-2D4X9-M337T-2342K</td><td>Project 2013 Professional</td></tr>
+    <tr><td>6NTH3-CW976-3G3Y2-JK3TX-8QHTT</td><td>Project 2013 Standard</td></tr>
+    <tr><td>C2FG9-N6J68-H8BTJ-BW3QX-RM3B3</td><td>Visio 2013 Professional</td></tr>
+    <tr><td>J484Y-4NKBF-W2HMG-DBMJC-PGWR7</td><td>Visio 2013 Standard</td></tr>
+    <tr><td>NG2JY-H4JBT-HQXYP-78QH9-4JM2D</td><td>Access 2013</td></tr>
+    <tr><td>VGPNG-Y7HQW-9RHP7-TKPV3-BG7GB</td><td>Excel 2013</td></tr>
+    <tr><td>42QTK-RN8M7-J3C4G-BBGYM-88CYV</td><td>Mondo 2013</td></tr>
+    <tr><td>DKT8B-N7VXH-D963P-Q4PHY-F8894</td><td>InfoPath 2013</td></tr>
+    <tr><td>2MG3G-3BNTT-3MFW9-KDQW3-TCK7R</td><td>Lync 2013</td></tr>
+    <tr><td>TGN6P-8MMBC-37P2F-XHXXK-P34VW</td><td>OneNote 2013</td></tr>
+    <tr><td>QPN8Q-BJBTJ-334K3-93TGY-2PMBT</td><td>Outlook 2013</td></tr>
+    <tr><td>4NT99-8RJFH-Q2VDH-KYG2C-4RD4F</td><td>PowerPoint 2013</td></tr>
+    <tr><td>PN2WF-29XG2-T9HJ7-JQPJR-FCXK4</td><td>Publisher 2013</td></tr>
+    <tr><td>6Q7VD-NX8JD-WJ2VH-88V73-4GBJ7</td><td>Word 2013</td></tr>
+    <tr><td>VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB</td><td>Office Professional Plus 2010</td></tr>
+    <tr><td>D6QFG-VBYP2-XQHM7-J97RH-VVRCK</td><td>Office Small Business Basics 2010</td></tr>
+    <tr><td>V7QKV-4XVVR-XYV4D-F7DFM-8R6BM</td><td>Office Standard 2010</td></tr>
+    <tr><td>YGX6F-PGV49-PGW3J-9BTGG-VHKC6</td><td>Project Professional 2010</td></tr>
+    <tr><td>4HP3K-88W3F-W2K3D-6677X-F9PGB</td><td>Project Standard 2010</td></tr>
+    <tr><td>D9DWC-HPYVV-JGF4P-BTWQB-WX8BJ</td><td>Visio Premium 2010</td></tr>
+    <tr><td>7MCW8-VRQVK-G677T-PDJCM-Q8TCP</td><td>Visio Professional 2010</td></tr>
+    <tr><td>767HD-QGMWX-8QTDB-9G3R2-KHFGJ</td><td>Visio Standard 2010</td></tr>
+    <tr><td>V7Y44-9T38C-R2VJK-666HK-T7DDX</td><td>Access 2010</td></tr>
+    <tr><td>H62QG-HXVKF-PP4HP-66KMR-CW9BM</td><td>Excel 2010</td></tr>
+    <tr><td>YBJTT-JG6MD-V9Q7P-DBKXJ-38W9R</td><td>Mondo 2010</td></tr>
+    <tr><td>7TC2V-WXF6P-TD7RT-BQRXR-B8K32</td><td>Mondo 2010</td></tr>
+    <tr><td>QYYW6-QP4CB-MBV6G-HYMCJ-4T3J4</td><td>SharePoint Workspace 2010</td></tr>
+    <tr><td>K96W8-67RPQ-62T9Y-J8FQJ-BT37T</td><td>InfoPath 2010</td></tr>
+    <tr><td>Q4Y4M-RHWJM-PY37F-MTKWH-D3XHX</td><td>OneNote 2010</td></tr>
+    <tr><td>7YDC2-CWM8M-RRTJC-8MDVC-X3DWQ</td><td>Outlook 2010</td></tr>
+    <tr><td>RC8FX-88JRY-3PF7C-X8P67-P4VTT</td><td>PowerPoint 2010</td></tr>
+    <tr><td>BFK7F-9MYHM-V68C7-DRQ66-83YTP</td><td>Publisher 2010</td></tr>
+    <tr><td>HVHB3-C6FV7-KQX9W-YQG79-CRY7T</td><td>Word 2010</td></tr>
+    </table>
+三、KMS私服激活步骤：<br />
+1、Windows/Windows Server系列<br />
+以管理员权限运行CMD:<br />
+<pre>CD /d "C:\Windows\System32"
+CSCRIPT /NOLOGO SLMGR.VBS /SKMS kms.cnman.github.io
+CSCRIPT /NOLOGO SLMGR.VBS /ATO</pre>
+
+2、Office 2016系列（Office 2010系列把下面命令中的Office16改成Office14即可，Office 2013系列把下面命令中的Office16改成Office15即可）<br />
+以管理员权限运行CMD:<br />
+64位Office：<br />
+<pre>CD /d "C:\Program Files\Microsoft Office\Office16\"
+CSCRIPT OSPP.VBS /SETHST:kms.cnman.github.io
+CSCRIPT OSPP.VBS /ACT</pre>
+
+32位Office：<br />
+<pre>CD /d "C:\Program Files (x86)\Microsoft Office\Office16\"
+CSCRIPT OSPP.VBS /SETHST:kms.cnman.github.io
+CSCRIPT OSPP.VBS /ACT</pre>
+
+<br />
+其他可用KMS
+<pre>110.noip.me:1688
+54.223.212.31:1688
+kms.digiboy.ir:1688
+kms.lotro.cc:1688
+kms.miaomiao.zyns.com:1688
+kms.shuax.com:1688
+www.beishe.cc:1688
+www.zgbs.cc:1688
+xykz.f3322.org:1688</pre>
+<img src="imgs/kmstest20160917.png" />
+  </div>
+ </body>
+</html>

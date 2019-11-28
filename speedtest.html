@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>VPS SPEEDTEST</title>
+	<link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="stylesheet/custom.css">
+	<!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+	<script src="javascript/jquery.min.js"></script>
+	<script src="javascript/bootstrap.min.js"></script>
+  </head>
+ <body>
+ <div class="container">
+	<h1>BandwagonHost 测速</h1><br>
+<!--
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=19">BandwagonHost年付3.99$：64M内存、100GB流量/月、1.5GB HDD硬盘</a><br>
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=20">BandwagonHost年付4.99$：96M内存、200GB流量/月、2GB HDD硬盘</a><br>
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=21">BandwagonHost年付5.99$：128M内存、300GB流量/月、3GB HDD硬盘</a><br>
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=22">BandwagonHost年付9.99$：512M内存、500GB流量/月、5GB SSD硬盘</a><br>
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=27">BandwagonHost年付11.99$：512M内存、1000GB流量/月、10GB SSD硬盘</a><br />
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=28">BandwagonHost年付18.99$：1024M内存、2000GB流量/月、20GB SSD硬盘</a><br />
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=36">BandwagonHost年付19.99$：512M内存、1000GB流量/月、10GB SSD硬盘</a>(仅USCA_FMT机房可选)<br>
+-->
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=12">BandwagonHost年付19.99$：512M内存、500GB流量/月、10GB SSD硬盘</a>(OpenVZ架构，8机房可选)<br>
+	<a target="_blank" href="https://bandwagonhost.com/aff.php?aff=1366&pid=43">BandwagonHost年付19.99$：512M内存、500GB流量/月、10GB SSD硬盘</a>(KVM架构，6机房可选)<br>
+	<table class="table table-bordered">
+		<tr><th>1000MB Test</th><th>IP</th><th>Country</th><th>Region</th><th>City</th><th>ISP</th></tr>
+		<tr><td><a href="http://23.252.96.201/1000mb.bin">USA West coast (California - Los Angeles DC1 QNET, KVM plans)</a></td><td>23.252.96.201</td><td>United States</td><td>Washington</td><td>Seattle</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://104.194.76.20/1000mb.bin">USA West coast (California - Los Angeles DC1 QNET, OpenVZ plans)</a></td><td>104.194.76.20</td><td>United States</td><td>California</td><td>Los Angeles</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://98.142.136.11/1000mb.bin">USA West coast (California - Los Angeles DC2 MCOM)</a></td><td>98.142.136.11</td><td>United States</td><td>California</td><td>Fremont</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://198.35.46.28/1000mb.bin">USA West coast (Phoenix Arizona)</a></td><td>198.35.46.28</td><td>United States</td><td>Arizona</td><td>Phoenix</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://184.105.138.67/1000mb.bin">USA West coast (California - Fremont)</a></td><td>184.105.138.67</td><td>United States</td><td>California</td><td>Fremont</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://208.167.227.122/1000mb.bin">USA East coast (New York)</a></td><td>208.167.227.122</td><td>United States</td><td>New Jersey</td><td>Piscataway</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://23.252.104.22/1000mb.bin">USA East coast (Florida)</a></td><td>23.252.104.22</td><td>United States</td><td>Florida</td><td>Jacksonville</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://45.62.120.202/1000mb.bin">EU (Netherlands)</a></td><td>45.62.120.202</td><td>Netherlands</td><td>South Holland</td><td>Rotterdam</td><td>IT7 Networks Inc</td></tr>
+		<tr><td><a href="http://172.93.32.16/1000mb.bin">Canada, Vancouver</a></td><td>172.93.32.16</td><td>Canada</td><td>British Columbia</td><td>Vancouver</td><td>IT7 Networks Inc</td></tr>
+	</table>
+	<br>
+	<h1>VULTR 测速</h1><br>
+	<a target="_blank" href="https://www.vultr.com/?ref=6923829">VULTR月付2.5$：512M内存、500GB流量/月、20GB SSD硬盘(用此链接新用户注册充5$送10$)</a>
+    <table class="table table-bordered">
+        <tr><th>1000MB Test</th><th>IP</th><th>Country</th><th>Region</th><th>City</th><th>ISP</th></tr>
+        <tr><td><a href="https://hnd-jp-ping.vultr.com/vultr.com.1000MB.bin">https://hnd-jp-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.201.151</td><td>Japan</td><td>Tokyo</td><td>Tokyo</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://sgp-ping.vultr.com/vultr.com.1000MB.bin">https://sgp-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>45.32.100.168</td><td>Singapore</td><td>Singapore</td><td>Singapore</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://syd-au-ping.vultr.com/vultr.com.1000MB.bin">https://syd-au-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.212.117</td><td>Australia</td><td>New South Wales</td><td>Sydney</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://ams-nl-ping.vultr.com/vultr.com.1000MB.bin">https://ams-nl-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.198.102</td><td>Netherlands</td><td>Noord-Holland</td><td>Amsterdam</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://fra-de-ping.vultr.com/vultr.com.1000MB.bin">https://fra-de-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.210.117</td><td>Germany</td><td>Baden-Wurttemberg</td><td>Griesheim</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://par-fr-ping.vultr.com/vultr.com.1000MB.bin">https://par-fr-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.209.127</td><td>France</td><td>Ile-de-France</td><td>Paris</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://lon-gb-ping.vultr.com/vultr.com.1000MB.bin">https://lon-gb-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.196.101</td><td>United Kingdom</td><td>England</td><td>London</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://wa-us-ping.vultr.com/vultr.com.1000MB.bin">https://wa-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.194.105</td><td>United States</td><td>Washington</td><td>Seattle</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://sjo-ca-us-ping.vultr.com/vultr.com.1000MB.bin">https://sjo-ca-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>104.156.230.107</td><td>United States</td><td>California</td><td>San Jose</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://lax-ca-us-ping.vultr.com/vultr.com.1000MB.bin">https://lax-ca-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.219.200</td><td>United States</td><td>California</td><td>Los Angeles</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://il-us-ping.vultr.com/vultr.com.1000MB.bin">https://il-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>107.191.51.12</td><td>United States</td><td>Illinois</td><td>Elk Grove Village</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://tx-us-ping.vultr.com/vultr.com.1000MB.bin">https://tx-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.224.175</td><td>United States</td><td>Texas</td><td>Dallas</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://nj-us-ping.vultr.com/vultr.com.1000MB.bin">https://nj-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.149.182</td><td>United States</td><td>New Jersey</td><td>Piscataway</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://ga-us-ping.vultr.com/vultr.com.1000MB.bin">https://ga-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>108.61.193.166</td><td>United States</td><td>Georgia</td><td>Atlanta</td><td>Vultr Holdings, LLC</td></tr>
+        <tr><td><a href="https://fl-us-ping.vultr.com/vultr.com.1000MB.bin">https://fl-us-ping.vultr.com/vultr.com.1000MB.bin</a></td><td>104.156.244.232</td><td>United States</td><td>Florida</td><td>Miami</td><td>Vultr Holdings, LLC</td></tr>
+    </table>
+	<br>
+	<h1>DigitalOcean 测速</h1><br>
+	<a target="_blank" href="https://www.digitalocean.com/?refcode=09e36ec88b83">DigitalOcean月付5.00$：512M内存、1000GB流量/月、20GB SSD硬盘(用此链接新用户注册充5$送10$)</a>
+	<table class="table table-bordered">
+		<tr><th>100MB Test</th><th>IP</th><th>Country</th><th>Region</th><th>City</th><th>ISP</th></tr>
+		<tr><td><a href="http://speedtest-sfo1.digitalocean.com/100mb.test">SFO1:http://speedtest-sfo1.digitalocean.com/100mb.test</a></td><td>162.243.146.51</td><td>United States</td><td>California</td><td>San Francisco</td><td>Digital Ocean Inc.</td></tr>
+		<tr><td><a href="http://speedtest-sfo2.digitalocean.com/100mb.test">SFO2:http://speedtest-sfo2.digitalocean.com/100mb.test</a></td><td>138.68.0.41</td><td>United States</td><td>California</td><td>San Francisco</td><td>Digital Ocean Inc.</td></tr>
+		<tr><td><a href="http://speedtest-nyc1.digitalocean.com/100mb.test">NYC1:http://speedtest-nyc1.digitalocean.com/100mb.test</a></td><td>198.211.112.36</td><td>United States</td><td>New York</td><td>New York City</td><td>Digital Ocean Inc.</td></tr>
+		<tr><td><a href="http://speedtest-nyc2.digitalocean.com/100mb.test">NYC2:http://speedtest-nyc2.digitalocean.com/100mb.test</a></td><td>162.243.123.82</td><td>United States</td><td>New York</td><td>New York City</td><td>Digital Ocean Inc.</td></tr>
+		<tr><td><a href="http://speedtest-nyc3.digitalocean.com/100mb.test">NYC3:http://speedtest-nyc3.digitalocean.com/100mb.test</a></td><td>104.131.63.93</td><td>United States</td><td>New York</td><td>New York City</td><td>Digital Ocean Inc.</td></tr>
+		<tr><td><a href="http://speedtest-ams1.digitalocean.com/100mb.test">AMS1:http://speedtest-ams1.digitalocean.com/100mb.test</a></td><td>146.185.176.179</td><td>Netherlands</td><td>Noord-Holland</td><td>Amsterdam</td><td>Digital Ocean Inc.</td></tr>
+		<tr><td><a href="http://speedtest-ams2.digitalocean.com/100mb.test">AMS2:http://speedtest-ams2.digitalocean.com/100mb.test</a></td><td>95.85.7.154</td><td>Netherlands</td><td>Noord-Holland</td><td>Amsterdam</td><td>Digital Ocean, Inc.</td></tr>
+		<tr><td><a href="http://speedtest-ams3.digitalocean.com/100mb.test">AMS3:http://speedtest-ams3.digitalocean.com/100mb.test</a></td><td>178.62.255.144</td><td>Netherlands</td><td>Noord-Holland</td><td>Amsterdam</td><td>Digital Ocean, Inc.</td></tr>
+		<tr><td><a href="http://speedtest-sgp1.digitalocean.com/100mb.test">SGP1:http://speedtest-sgp1.digitalocean.com/100mb.test</a></td><td>128.199.236.18</td><td>Singapore</td><td>Singapore</td><td>Singapore</td><td>Digital Ocean, Inc.</td></tr>
+		<tr><td><a href="http://speedtest-lon1.digitalocean.com/100mb.test">LON1:http://speedtest-lon1.digitalocean.com/100mb.test</a></td><td>178.62.63.247</td><td>United Kingdom</td><td>England</td><td>London</td><td>Digital Ocean, Inc.</td></tr>
+		<tr><td><a href="http://speedtest-fra1.digitalocean.com/100mb.test">FRA1:http://speedtest-fra1.digitalocean.com/100mb.test</a></td><td>46.101.236.127</td><td>Germany</td><td>Hesse</td><td>Frankfurt am Main</td><td>Digital Ocean, Inc.</td></tr>
+		<tr><td><a href="http://speedtest-tor1.digitalocean.com/100mb.test">TOR1:http://speedtest-tor1.digitalocean.com/100mb.test</a></td><td>159.203.0.174</td><td>Canada</td><td>Ontario</td><td>Toronto</td><td>Digital Ocean, Inc.</td></tr>
+		<tr><td><a href="http://speedtest-blr1.digitalocean.com/100mb.test">BLR1:http://speedtest-blr1.digitalocean.com/100mb.test</a></td><td>139.59.44.249</td><td>India</td><td>Karnataka</td><td>Bangalore</td><td>Digital Ocean, Inc.</td></tr>
+	</table>
+	<br>
+	<h1>Linode 测速</h1><br>
+	最低5$/月，参考<a target="_blank" href="https://www.linode.com/pricing">https://www.linode.com/pricing</a><br>
+	<table class="table table-bordered">
+		<tr><th>100MB Test</th><th>IP</th><th>Country</th><th>Region</th><th>City</th><th>ISP</th></tr>
+		<tr><td><a href="http://speedtest.singapore.linode.com/100MB-singapore.bin">http://speedtest.singapore.linode.com/100MB-singapore.bin</a></td><td>139.162.23.4</td><td>Singapore</td><td>Singapore</td><td>Singapore</td><td>Linode, LLC</td></tr>
+		<tr><td><a href="http://speedtest.tokyo.linode.com/100MB-tokyo.bin">http://speedtest.tokyo.linode.com/100MB-tokyo.bin</a></td><td>106.187.96.148</td><td>Japan</td><td>Tokyo</td><td>Tokyo</td><td>Linode, LLC</td></tr>
+		<tr><td><a href="http://speedtest.london.linode.com/100MB-london.bin">http://speedtest.london.linode.com/100MB-london.bin</a></td><td>176.58.107.39</td><td>United Kingdom</td><td>England</td><td>London</td><td>Linode, LLC</td></tr>
+		<tr><td><a href="http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin">http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin</a></td><td>139.162.130.8</td><td>Germany</td><td>Hesse</td><td>Frankfurt am Main</td><td>Linode, LLC</td></tr>
+		<tr><td><a href="http://speedtest.newark.linode.com/100MB-newark.bin">http://speedtest.newark.linode.com/100MB-newark.bin</a></td><td>50.116.57.237</td><td>United States</td><td>New Jersey</td><td>Newark</td><td>Linode, LLC</td></tr>
+		<tr><td><a href="http://speedtest.atlanta.linode.com/100MB-atlanta.bin">http://speedtest.atlanta.linode.com/100MB-atlanta.bin</a></td><td>50.116.39.117</td><td>United States</td><td>Georgia</td><td>Atlanta</td><td>Linode, LLC</td></tr>
+		<tr><td><a href="http://speedtest.dallas.linode.com/100MB-dallas.bin">http://speedtest.dallas.linode.com/100MB-dallas.bin</a></td><td>50.116.25.154</td><td>United States</td><td>New Jersey</td><td>Absecon</td><td>Linode, LLC</td></tr>
+		<tr><td><a href="http://speedtest.fremont.linode.com/100MB-fremont.bin">http://speedtest.fremont.linode.com/100MB-fremont.bin</a></td><td>50.116.14.9</td><td>United States</td><td>New York</td><td>New York City</td><td>Linode, LLC</td></tr>
+	</table>
+	<br>
+	<h1>RamNode 测速</h1><br>
+	RamNode年付15.00$：1 Core CPU、128MB內存、64MB VSwap、500GB流量/月、12GB SSD硬盤
+	<a target="_blank" href="http://www.ramnode.com/vps.php">http://www.ramnode.com/vps.php</a><br>
+	<table class="table table-bordered">
+		<tr><th>100MB Test</th><th>IP</th><th>Country</th><th>Region</th><th>City</th><th>ISP</th></tr>
+		<tr><td><a href="http://lg.nyc.ramnode.com/static/100MB.test">http://lg.nyc.ramnode.com/static/100MB.test</a></td><td>107.191.96.26</td><td>United States</td><td>New York</td><td>New York City</td><td>RamNode LLC</td></tr>
+		<tr><td><a href="http://lg.atl.ramnode.com/static/100MB.test">http://lg.atl.ramnode.com/static/100MB.test</a></td><td>107.191.101.180</td><td>United States</td><td>Georgia</td><td>Atlanta</td><td>RamNode LLC</td></tr>
+		<tr><td><a href="http://lg.sea.ramnode.com/static/100MB.test">http://lg.sea.ramnode.com/static/100MB.test</a></td><td>23.226.229.4</td><td>United States</td><td>Washington</td><td>Seattle</td><td>RamNode LLC</td></tr>
+		<tr><td><a href="http://lg.la.ramnode.com/static/100MB.test">http://lg.la.ramnode.com/static/100MB.test</a></td><td>168.235.72.22</td><td>United States</td><td>California</td><td>Los Angeles</td><td>RamNode LLC</td></tr>
+		<tr><td><a href="http://lg.nl.ramnode.com/static/100MB.test">http://lg.nl.ramnode.com/static/100MB.test</a></td><td>176.56.238.3</td><td>Netherlands</td><td>Noord-Holland</td><td>Amsterdam</td><td>RouteLabel V.O.F.</td></tr>
+	</table>
+	<h1>SoftLayer 测速</h1><br>
+	<table class="table table-bordered">
+		<tr><th>100MB Test</th><th>IP</th><th>Country</th><th>Region</th><th>City</th><th>ISP</th></tr>
+		<tr><td><a href="http://speedtest.hkg02.softlayer.com/downloads/test100.zip">http://speedtest.hkg02.softlayer.com/downloads/test100.zip</a></td><td>119.81.130.170</td><td>China</td><td>Hong Kong</td><td>Hong Kong</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.tok02.softlayer.com/downloads/test100.zip">http://speedtest.tok02.softlayer.com/downloads/test100.zip</a></td><td>161.202.125.20</td><td>Japan</td><td>Tokyo</td><td>Tokyo</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.sng01.softlayer.com/downloads/test100.zip">http://speedtest.sng01.softlayer.com/downloads/test100.zip</a></td><td>119.81.28.170</td><td>Singapore</td><td>Singapore</td><td>Singapore</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.che01.softlayer.com/downloads/test100.zip">http://speedtest.che01.softlayer.com/downloads/test100.zip</a></td><td>169.38.65.84</td><td>India</td><td>Tamil Nadu</td><td>Chennai</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.syd01.softlayer.com/downloads/test100.zip">http://speedtest.syd01.softlayer.com/downloads/test100.zip</a></td><td>168.1.1.212</td><td>Australia</td><td>New South Wales</td><td>Sydney</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.mel01.softlayer.com/downloads/test100.zip">http://speedtest.mel01.softlayer.com/downloads/test100.zip</a></td><td>168.1.65.244</td><td>Australia</td><td>Victoria</td><td>Melbourne</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.ams01.softlayer.com/downloads/test100.zip">http://speedtest.ams01.softlayer.com/downloads/test100.zip</a></td><td>159.253.132.18</td><td>Netherlands</td><td>Noord-Holland</td><td>Amsterdam</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.ams03.softlayer.com/downloads/test100.zip">http://speedtest.ams03.softlayer.com/downloads/test100.zip</a></td><td>159.8.252.180</td><td>Netherlands</td><td>Noord-Holland</td><td>Amsterdam</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.fra02.softlayer.com/downloads/test100.zip">http://speedtest.fra02.softlayer.com/downloads/test100.zip</a></td><td>159.122.69.4</td><td>Germany</td><td>Hessen</td><td>Frankfurt am Main</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.lon02.softlayer.com/downloads/test100.zip">http://speedtest.lon02.softlayer.com/downloads/test100.zip</a></td><td>5.10.97.132</td><td>United Kingdom</td><td>England</td><td>London</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.par01.softlayer.com/downloads/test100.zip">http://speedtest.par01.softlayer.com/downloads/test100.zip</a></td><td>159.8.64.212</td><td>France</td><td>Ile-de-France</td><td>Paris</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.mil01.softlayer.com/downloads/test100.zip">http://speedtest.mil01.softlayer.com/downloads/test100.zip</a></td><td>159.122.128.84</td><td>Italy</td><td>Lombardia</td><td>Milan</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.mex01.softlayer.com/downloads/test100.zip">http://speedtest.mex01.softlayer.com/downloads/test100.zip</a></td><td>169.57.4.116</td><td>Mexico</td><td>Distrito Federal</td><td>Mexico City</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.mon01.softlayer.com/downloads/test100.zip">http://speedtest.mon01.softlayer.com/downloads/test100.zip</a></td><td>169.54.124.180</td><td>Canada</td><td>Quebec</td><td>Montreal</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.tor01.softlayer.com/downloads/test100.zip">http://speedtest.tor01.softlayer.com/downloads/test100.zip</a></td><td>158.85.65.212</td><td>Canada</td><td>Ontario</td><td>Toronto</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.sao01.softlayer.com/downloads/test100.zip">http://speedtest.sao01.softlayer.com/downloads/test100.zip</a></td><td>169.57.128.148</td><td>Brazil</td><td>Sao Paulo</td><td>Jundiai</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.dal01.softlayer.com/downloads/test100.zip">http://speedtest.dal01.softlayer.com/downloads/test100.zip</a></td><td>74.86.116.210</td><td>United States</td><td>Texas</td><td>Dallas</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.dal02.softlayer.com/downloads/test100.zip">http://speedtest.dal02.softlayer.com/downloads/test100.zip</a></td><td></td><td></td><td></td><td></td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.dal05.softlayer.com/downloads/test100.zip">http://speedtest.dal05.softlayer.com/downloads/test100.zip</a></td><td>173.192.68.18</td><td>United States</td><td>Texas</td><td>Dallas</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.dal06.softlayer.com/downloads/test100.zip">http://speedtest.dal06.softlayer.com/downloads/test100.zip</a></td><td>184.172.97.34</td><td>United States</td><td>Texas</td><td>Dallas</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.dal07.softlayer.com/downloads/test100.zip">http://speedtest.dal07.softlayer.com/downloads/test100.zip</a></td><td>184.173.203.2</td><td>United States</td><td>Texas</td><td>Dallas</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.dal09.softlayer.com/downloads/test100.zip">http://speedtest.dal09.softlayer.com/downloads/test100.zip</a></td><td>198.23.112.180</td><td>United States</td><td>Texas</td><td>Dallas</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.hou02.softlayer.com/downloads/test100.zip">http://speedtest.hou02.softlayer.com/downloads/test100.zip</a></td><td>173.193.70.98</td><td>United States</td><td>Texas</td><td>Houston</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.sea01.softlayer.com/downloads/test100.zip">http://speedtest.sea01.softlayer.com/downloads/test100.zip</a></td><td>67.228.112.250</td><td>United States</td><td>Washington</td><td>Seattle</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.sjc01.softlayer.com/downloads/test100.zip">http://speedtest.sjc01.softlayer.com/downloads/test100.zip</a></td><td>50.23.64.58</td><td>United States</td><td>California</td><td>San Jose</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.sjc03.softlayer.com/downloads/test100.zip">http://speedtest.sjc03.softlayer.com/downloads/test100.zip</a></td><td>169.45.125.148</td><td>United States</td><td>California</td><td>San Jose</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.wdc01.softlayer.com/downloads/test100.zip">http://speedtest.wdc01.softlayer.com/downloads/test100.zip</a></td><td>208.43.102.250</td><td>United States</td><td>District Of Columbia</td><td>Washington</td><td>SoftLayer Technologies Inc.</td></tr>
+		<tr><td><a href="http://speedtest.wdc04.softlayer.com/downloads/test100.zip">http://speedtest.wdc04.softlayer.com/downloads/test100.zip</a></td><td>169.55.65.212</td><td>United States</td><td>District Of Columbia</td><td>Washington</td><td>SoftLayer Technologies Inc.</td></tr>
+	</table>
+	<br>
+	<h1>AlphaRacks Hosting 测速</h1><br>
+	<a target="_blank" href="https://www.alpharacks.com/myrack/aff.php?pid=49&aff=098">AlphaRacks Hosting年付10$：2 Cores,256MB内存,512MB vSwap,25GB HDD硬盘,500GB流量/月</a><br>
+	<a target="_blank" href="https://www.alpharacks.com/myrack/aff.php?pid=75&aff=098">AlphaRacks Hosting年付12$：2 Cores,768MB内存,768MB vSwap,40GB HDD硬盘,2000GB流量/月</a><br>
+	<a target="_blank" href="https://www.alpharacks.com/myrack/aff.php?pid=76&aff=098">AlphaRacks Hosting年付18$：4 Cores,1GB内存,1GB vSwap,60GB HDD硬盘,3000GB流量/月</a><br>
+	<a target="_blank" href="https://www.alpharacks.com/myrack/aff.php?pid=55&aff=098">AlphaRacks Hosting年付18$：4 Cores,1GB内存,2GB vSwap,50GB HDD硬盘,2000GB流量/月</a><br>
+	<table class="table table-bordered">
+		<tr><th>100MB Test</th><th>IP</th><th>Country</th><th>Region</th><th>City</th><th>ISP</th></tr>
+		<tr><td><a href="http://repos.lax-noc.com/speedtests/100mb.bin">http://repos.lax-noc.com/speedtests/100mb.bin</a></td><td>198.55.111.5</td><td>United States</td><td>California</td><td>Los Angeles</td><td>QuadraNet Inc</td></tr>
+	</table>
+	<br>
+	<b><a target="_blank" href="https://www.v2ex.com/?r=lenovo">V2EX</a>的tobyxdd做了一张中国联通骨干网到日本KDDI骨干网的延迟状况73小时测试图，规律还是比较明显的，晚上抽风比较严重！在线看视频最好错开晚高峰:)</b><br>
+	<a target="_blank" href="http://toby.so/arch/121"><img src="imgs/small.png" width="100%" /></a>
+ </div>
+ </body>
+</html>
