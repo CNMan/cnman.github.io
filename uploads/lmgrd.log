@@ -1,0 +1,138 @@
+23:43:09 (lmgrd) -----------------------------------------------
+23:43:09 (lmgrd)   Please Note:
+23:43:09 (lmgrd) 
+23:43:09 (lmgrd)   This log is intended for debug purposes only.
+23:43:09 (lmgrd)   In order to capture accurate license
+23:43:09 (lmgrd)   usage data into an organized repository,
+23:43:09 (lmgrd)   please enable report logging. Use Flexera's
+23:43:09 (lmgrd)   software license administration  solution,
+23:43:09 (lmgrd)   FlexNet Manager, to  readily gain visibility
+23:43:09 (lmgrd)   into license usage data and to create
+23:43:09 (lmgrd)   insightful reports on critical information like
+23:43:09 (lmgrd)   license availability and usage. FlexNet Manager
+23:43:09 (lmgrd)   can be fully automated to run these reports on
+23:43:09 (lmgrd)   schedule and can be used to track license
+23:43:09 (lmgrd)   servers and usage across a heterogeneous
+23:43:09 (lmgrd)   network of servers including Windows NT, Linux
+23:43:09 (lmgrd)   and UNIX.
+23:43:09 (lmgrd) 
+23:43:09 (lmgrd) -----------------------------------------------
+23:43:09 (lmgrd) 
+23:43:09 (lmgrd) 
+23:43:09 (lmgrd) Server's System Date and Time: Sun Jul 24 2022 23:43:09 EDT
+23:43:09 (lmgrd) SLOG: Summary LOG statistics is enabled.
+23:43:09 (lmgrd) The license server manager (lmgrd) running as root:
+23:43:09 (lmgrd) 	This is a potential security problem
+23:43:09 (lmgrd) 	and is not recommended.
+23:43:09 (lmgrd) FlexNet Licensing (v11.18.1.0 build 279526 x64_lsb) started on lamp-ubuntu-s-2vcpu-2gb-intel-blr1-01 (linux) (7/24/2022)
+23:43:09 (lmgrd) Copyright (c) 1988-2021 Flexera. All Rights Reserved.
+23:43:09 (lmgrd) World Wide Web:  http://www.flexerasoftware.com
+23:43:09 (lmgrd) License file(s): Lic_Standalone_R2013a.dat
+23:43:09 (lmgrd) lmgrd tcp-port 27000
+23:43:09 (lmgrd) (@lmgrd-SLOG@) ===============================================
+23:43:09 (lmgrd) (@lmgrd-SLOG@) === LMGRD ===
+23:43:09 (lmgrd) (@lmgrd-SLOG@) Start-Date: Sun Jul 24 2022 23:43:09 EDT
+23:43:09 (lmgrd) (@lmgrd-SLOG@) PID: 1174284
+23:43:09 (lmgrd) (@lmgrd-SLOG@) LMGRD Version: v11.18.1.0 build 279526 x64_lsb ( build 279526 (ipv6))
+23:43:09 (lmgrd) (@lmgrd-SLOG@) 
+23:43:09 (lmgrd) (@lmgrd-SLOG@) === Network Info ===
+23:43:09 (lmgrd) (@lmgrd-SLOG@) Listening port: 27000
+23:43:09 (lmgrd) (@lmgrd-SLOG@) 
+23:43:09 (lmgrd) (@lmgrd-SLOG@) === Startup Info ===
+23:43:09 (lmgrd) (@lmgrd-SLOG@) Server Configuration: Single Server
+23:43:09 (lmgrd) (@lmgrd-SLOG@) Command-line options used at LS startup: -l lmgrd.log -c Lic_Standalone_R2013a.dat 
+23:43:09 (lmgrd) (@lmgrd-SLOG@) License file(s) used:  Lic_Standalone_R2013a.dat
+23:43:09 (lmgrd) (@lmgrd-SLOG@) ===============================================
+23:43:09 (lmgrd) Starting vendor daemons ... 
+23:43:09 (lmgrd) Starting vendor daemon at port 50734
+23:43:09 (lmgrd) Using vendor daemon port 50734 specified in license file
+23:43:09 (lmgrd) Started MLM (internet tcp_port 50734 pid 1174286)
+23:43:09 (MLM) FlexNet Licensing version v11.18.1.0 build 279526 x64_lsb
+23:43:09 (MLM) SLOG: Summary LOG statistics is enabled.
+23:43:09 (MLM) SLOG: FNPLS-INTERNAL-CKPT1
+23:43:09 (MLM) SLOG: VM Status: 4
+23:43:09 (MLM) SLOG: FNPLS-INTERNAL-CKPT5
+23:43:09 (MLM) SLOG: TPM Status: 0
+23:43:09 (MLM) SLOG: FNPLS-INTERNAL-CKPT6
+23:43:09 (MLM) Server started on lamp-ubuntu-s-2vcpu-2gb-intel-blr1-01 for:	Aerospace_Blockset 
+23:43:09 (MLM) Aerospace_Toolbox Bioinformatics_Toolbox Cert_Kit_IEC	
+23:43:09 (MLM) Communication_Blocks Communication_Toolbox Communications_System_Toolbox 
+23:43:09 (MLM) Compiler	Computer_Vision_System_Toolbox Control_System_Toolbox 
+23:43:09 (MLM) Control_Toolbox Curve_Fitting_Toolbox Data_Acq_Toolbox 
+23:43:09 (MLM) Data_Acquisition_Toolbox Database_Toolbox Datafeed_Toolbox 
+23:43:09 (MLM) Dial_and_Gauge_Blocks Distrib_Computing_Toolbox Distributed_Computing_Server 
+23:43:09 (MLM) DO_Qualification_Kit DSP_System_Toolbox Econometrics_Toolbox 
+23:43:09 (MLM) EDA_Simulator_Link Embedded_IDE_Link Excel_Link	
+23:43:09 (MLM) Filter_Design_HDL_Coder Filter_Design_Toolbox Fin_Derivatives_Toolbox 
+23:43:09 (MLM) Fin_Instruments_Toolbox Financial_Instruments_Toolbox Financial_Toolbox 
+23:43:09 (MLM) Fixed_Income_Toolbox Fixed_Point_Designer Fixed_Point_Toolbox 
+23:43:09 (MLM) Fixed-Point_Blocks Fuzzy_Logic_Toolbox Fuzzy_Toolbox	
+23:43:09 (MLM) GADS_Toolbox	Gauges_Blockset Global_Optimization_Toolbox 
+23:43:09 (MLM) HDL_Coder	HDL_Verifier	Identification_Toolbox 
+23:43:09 (MLM) IEC_Certification_Kit Image_Acquisition_Toolbox Image_Processing_Toolbox 
+23:43:09 (MLM) Image_Toolbox	Instr_Control_Toolbox Instrument_Control_Toolbox 
+23:43:09 (MLM) MAP_Toolbox	Mapping_Toolbox MATLAB		
+23:43:09 (MLM) MATLAB_Builder_EX MATLAB_Builder_for_dot_Net MATLAB_Builder_for_Java 
+23:43:09 (MLM) MATLAB_Builder_JA MATLAB_Builder_NE MATLAB_Coder	
+23:43:09 (MLM) MATLAB_Compiler MATLAB_Distrib_Comp_Engine MATLAB_Excel_Builder 
+23:43:09 (MLM) MATLAB_Production_Server MATLAB_Report_Gen MATLAB_Report_Generator 
+23:43:09 (MLM) MBC_Toolbox	MPC_Toolbox	Neural_Network_Toolbox 
+23:43:09 (MLM) OPC_Toolbox	Optimization_Toolbox Parallel_Computing_Toolbox 
+23:43:09 (MLM) PDE_Toolbox	Phased_Array_System_Toolbox Power_System_Blocks 
+23:43:09 (MLM) Qual_Kit_DO	Real_Time_Windows_Target Real-Time_Win_Target 
+23:43:09 (MLM) Real-Time_Workshop RF_Blockset	RF_Toolbox	
+23:43:09 (MLM) Robust_Control_Toolbox Robust_Toolbox	RTW_Embedded_Coder 
+23:43:09 (MLM) Sensor_Array_Toolbox Signal_Blocks	Signal_Processing_Toolbox 
+23:43:09 (MLM) Signal_Toolbox	SimBiology	SimDriveline	
+23:43:09 (MLM) SimElectronics	SimEvents	SimHydraulics	
+23:43:09 (MLM) SimMechanics	SimPowerSystems SimRF		
+23:43:09 (MLM) Simscape	SIMULINK	Simulink_Code_Inspector 
+23:43:09 (MLM) Simulink_Coder	Simulink_Control_Design Simulink_Design_Optim 
+23:43:09 (MLM) Simulink_Design_Optimization Simulink_Design_Verifier Simulink_HDL_Coder 
+23:43:09 (MLM) Simulink_PLC_Coder SIMULINK_Report_Gen Simulink_Report_Generator 
+23:43:09 (MLM) SL_Verification_Validation Spreadsheet_Link_EX Stateflow	
+23:43:09 (MLM) Stateflow_Coder Statistics_Toolbox Symbolic_Math_Toolbox 
+23:43:09 (MLM) Symbolic_Toolbox System_Identification_Toolbox SystemTest	
+23:43:09 (MLM) Target_Support_Package Trading_Toolbox Vehicle_Network_Toolbox 
+23:43:09 (MLM) Video_and_Image_Blockset Virtual_Reality_Toolbox Wavelet_Toolbox 
+23:43:09 (MLM) XPC_Embedded_Option XPC_Target	xPC_Target_Embedded_Option 
+23:43:09 (MLM) EXTERNAL FILTERS are OFF
+23:43:09 (lmgrd) MLM using TCP-port 50734
+23:43:09 (MLM) License verification completed successfully.
+23:43:09 (MLM) SLOG: Statistics Log Frequency is 240 minute(s).
+23:43:09 (MLM) SLOG: TS update poll interval is 600 seconds.
+23:43:09 (MLM) SLOG: Activation borrow reclaim percentage is 0.
+23:43:09 (MLM) (@MLM-SLOG@) ===============================================
+23:43:09 (MLM) (@MLM-SLOG@) === Vendor Daemon ===
+23:43:09 (MLM) (@MLM-SLOG@) Vendor daemon: MLM
+23:43:09 (MLM) (@MLM-SLOG@) Start-Date: Sun Jul 24 2022 23:43:09 EDT
+23:43:09 (MLM) (@MLM-SLOG@) PID: 1174286
+23:43:09 (MLM) (@MLM-SLOG@) VD Version: v11.18.1.0 build 279526 x64_lsb ( build 279526 (ipv6))
+23:43:09 (MLM) (@MLM-SLOG@) 
+23:43:09 (MLM) (@MLM-SLOG@) === Startup/Restart Info ===
+23:43:09 (MLM) (@MLM-SLOG@) Options file used: None
+23:43:09 (MLM) (@MLM-SLOG@) Is vendor daemon a CVD: No
+23:43:09 (MLM) (@MLM-SLOG@) Is FlexNet Licensing Service installed and compatible: No
+23:43:09 (MLM) (@MLM-SLOG@) FlexNet Licensing Service Version: -NA-
+23:43:09 (MLM) (@MLM-SLOG@) Is TS accessed: No
+23:43:09 (MLM) (@MLM-SLOG@) TS access time: -NA-
+23:43:09 (MLM) (@MLM-SLOG@) Number of VD restarts since LS startup: 0
+23:43:09 (MLM) (@MLM-SLOG@) 
+23:43:09 (MLM) (@MLM-SLOG@) === Network Info ===
+23:43:09 (MLM) (@MLM-SLOG@) Listening port: 50734
+23:43:09 (MLM) (@MLM-SLOG@) Daemon select timeout (in seconds): 1
+23:43:09 (MLM) (@MLM-SLOG@) 
+23:43:09 (MLM) (@MLM-SLOG@) === Host Info ===
+23:43:09 (MLM) (@MLM-SLOG@) Host used in license file: lamp-ubuntu-s-2vcpu-2gb-intel-blr1-01
+23:43:09 (MLM) (@MLM-SLOG@) HostID node-locked in license file: 8e7ea18bb11c 
+23:43:09 (MLM) (@MLM-SLOG@) HostID of the License Server: "e669af89baa2 8e7ea18bb11c"
+23:43:09 (MLM) (@MLM-SLOG@) Running on Hypervisor: Unknown Hypervisor
+23:43:09 (MLM) (@MLM-SLOG@) ===============================================
+23:43:09 (MLM) TCP_NODELAY NOT enabled
+23:43:09 (MLM) Listener Thread: running
+23:43:38 (MLM) OUT: "MATLAB" Administrator@intel  
+23:46:11 (MLM) OUT: "MATLAB" Administrator@intel  
+23:47:41 (MLM) OUT: "MATLAB" Administrator@intel  
+23:49:16 (MLM) OUT: "MATLAB" Administrator@intel  
+23:50:45 (MLM) OUT: "MATLAB" Administrator@intel  
+23:52:01 (MLM) OUT: "MATLAB" Administrator@intel  

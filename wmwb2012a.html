@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>王码五笔2012A绿色安装</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+ </head>
+ <body>
+   <div class="container">
+  目前没有64位操作系统可供测试，先写32位的完整安装步骤吧，64位有机会再补全:)<br />
+  1、下载<a href="uploads/wmwb2012a.zip">wmwb2012a.zip</a>（均为原版文件，由innounp解包原版安装包wmwb2012a.exe获取），解压到D盘根目录<br />
+  2、32位：复制{syswow64}文件夹里的文件到C:\WINDOWS\system32\<br />
+  64位：复制{sys}文件夹里的文件到C:\WINDOWS\system32\，可能还需要复制{syswow64}文件夹里的文件到C:\WINDOWS\syswow64\<br />
+  3、32位：将以下内容保存为.reg文件，导入注册表，安装目录为D:\WMWB2012A，E0230804请先查看系统注册表确认无相同项目，有相同项目的话可以改成E0240804、E0250804、E0260804。。。等<br />
+<pre>Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WangMa]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WangMa\wmwb2011]
+"path"="D:\\WMWB2012A"
+"xlh"=""
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\E0230804]
+"Ime File"="wmwb2011.ime"
+"Layout Text"="王码五笔字型2012"
+"Layout File"="kbdus.dll"</pre>
+  64位：暂无<br />
+  4、语言栏就可以添加“王码五笔字型2012”了<br />
+<br />
+<br />
+如何用<a href="https://jaist.dl.sourceforge.net/project/innounp/innounp/innounp 0.47/innounp047.rar">innounp</a>解包原版安装包wmwb2012a.exe？<br />
+
+命令行运行<pre>innounp.exe -x wmwb2012a.exe -dWMWB2012A -a</pre>
+得到以下文件夹和文件：<br />
+<pre>e:\WMWB2012A\{app}\
+e:\WMWB2012A\{sys}\
+e:\WMWB2012A\{syswow64}\
+e:\WMWB2012A\install_script.iss</pre>
+其中：<br />
+{app}目录有xxx,1.xxx和xxx,2.xxx两对文件，Sha1分别都相同，保留一组即可，并删掉文件名里的,1或,2<br />
+{sys}目录有xxx,1.xxx和xxx,2.xxx两对文件，wangmaimefz,2.dll和wmwb2011,2.ime分别与{syswow64}目录里的
+wangmaimefz.dll和wmwb2011.ime的Sha1相同，可删除，然后删掉剩余文件文件名里的,1<br />
+install_script.iss没啥用，可删除<br />
+<br />
+2018版类似，只是需要解包两次<br />
+<pre>innounp.exe -x wmdyt18.exe -dWMWB2018 -a</pre>第一次解包得到<br />
+<pre>e:\WMWB2018\install_script.iss
+e:\WMWB2018\{tmp}\install_win7.exe
+e:\WMWB2018\{tmp}\install_win8.exe</pre>
+再分别解包install_win7.exe和install_win8.exe<br />
+Win7版WMWB18.IME基于IME架构，Win8版WMWB18.DLL基于TSF架构。<br />
+
+注册表可参考如下，XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX是您凭软件序列号和硬件代码获取到的激活码：<br />
+<pre>Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WangMa]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WangMa\wmwb18]
+"RegCode"="XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX"
+"path"="D:\\WMWB2018"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\E0230804]
+"Ime File"="WMWB18.IME"
+"Layout Text"="王码五笔字型"
+"Layout File"="kbdus.dll"</pre>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OSCDIMG</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+  </head>
+ <body>
+</pre><pre>oscdimg -help</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+For option information, use -help with one of the following categories
+	ISO      Options for the ISO 9660 file system
+	Joliet   Options for the Joliet file system
+	UDF      Options for the UDF file system
+	Boot     Options for bootable CDs
+	Optimize Options for optimization
+	Order    Options for ordering the files
+	DVD      Options for DVD video and audio
+	Mesg     Options for displaying warnings and messages
+	Other    Options that do not fit in any other category
+</pre><pre>oscdimg -help ISO</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+ISO 9660 options: These options cannot be combined with Joliet or UDF options
+
+	-n  Use to allow long file names (longer than DOS 8.3 names)
+	-nt Use to allow long file names, but restrict those names for
+	    NT 3.51 compatibility
+	-d  Use to allow lowercase file names
+
+The length of the file name plus the length of the file name extension shall
+not exceed 30 characters for the ISO 9660 file system.  ISO 9660 is the most
+widely compatible of the three available file systems produced by CDIMAGE.
+
+NOTE: The (-nt) option cannot be used with the (-d) option
+</pre><pre>oscdimg -help Joliet</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+Joliet options: These options cannot be combined with ISO 9660 options
+
+	-j1  This option is used to produce an image that has both the Joliet
+	     file system as well as the ISO 9660 file system on it.  The ISO
+	     9660 file system will be written with DOS compatible 8.3 file
+	     names.  The Joliet file system will have Unicode file names up
+	     to 64 characters long.
+	-j2  This option is used to produce an image that has only the Joliet
+	     file system on it.  Any system not capable of reading Joliet will
+	     only see a default text file alerting the user that this image is
+	     only available on computers that support Joliet.
+	-js  This option overrides the default text file used with the (-j2)
+	     option.  Example: -jsc:\readme.txt
+
+Joliet is an extension to the ISO 9660 file system.  It was created to
+overcome some of the limitations of that file system.  It allows longer
+file names, Unicode characters, and directory depths greater than 8.  Please
+note that using the (-j1) option does not duplicate all files on the image.
+The (-j1) option simply allows both file systems to view all the data on the
+disk.
+
+NOTE: The (-j2) option cannot be used with any UDF options.
+</pre><pre>oscdimg -help UDF</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+UDF options: These options cannot be combined with ISO 9660 options
+
+	-u1  This option is used to produce an image that has both the UDF file
+	     system and the ISO 9660 file system.  The ISO 9660 file system
+	     will be written with DOS compatible 8.3 file names.  The UDF file
+	     system will be written with Unicode file names.
+	-u2  This option is used to produce an image that has only the UDF
+	     file system on it.  Any system not capable of reading UDF will
+	     only see a default text file alerting the user that this image is
+	     only available on computers that support UDF.
+	-ur  This option overrides the default text file used with the (-u2)
+	     option.  Example: -urc:\readme.txt
+	-us  This option will create sparse file when available.  This can only
+	     be used with the (-u2) option.
+	-ue  This option will create embedded files.  This can only be used
+	     with the (-u2) option.
+	-uf  This option will embed UDF file identifier entries.  This can
+	     only be used with the (-u2) option.
+	-yl  This option will use long allocation descriptors instead of short
+	     allocation descriptors.
+
+Three revisions of the UDF file system supported by CDIMAGE.
+The default version is 1.50.
+	-udfver102 Writes UDF revision 1.02  (Supported: Windows 98 and later)
+	-udfver150 Writes UDF revision 1.50  (Supported: Windows 2K and later)
+	-udfver200 Writes UDF revision 2.00  (Supported: Windows XP and later)
+
+NOTE:  See DVD help for information on UDF and DVD Video/Audio images.
+</pre><pre>oscdimg -help Boot</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+Boot options: These options can be used to create bootable CD/DVD images
+
+The following options may only be used for single boot entry images and may
+not be combined with any multi-boot entry switches.
+
+	-b  This option is used to specify the file that will be written in the
+	    boot sector(s) of the disk.  Example: -bc:\location\cdboot.bin
+	-p  This option specifies the value to use for the Platform ID in the
+	    El Torito catalog.  The default is 0x00 to represent the x86
+	    platform.
+	-e  This option means not to use floppy disk emulation in the El Torito
+	    catalog.
+
+The following options may be used to generate multi boot entry images and may
+not be combined with any single boot entry switches.
+
+Each multi-boot entry is seperated via a # token, as well as the number of
+boot entries.  The options for a boot entry are seperated via a comma token.
+Each boot option must specify the boot code for that option.
+
+	-bootdata:<num>#defaultbootentry#bootentry2#bootentryN
+
+BootEntryOptions:
+	b   This option is used to specify the file that will be written in the
+	    boot sector(s) of the disk.  Example: -bc:\location\cdboot.bin
+	p   This option specifies the value to use for the Platform ID in the
+	    El Torito catalog.  The default is 0x00 to represent the x86
+	    platform. 0xEF represents an EFI-based system 
+	e   This option means not to use floppy disk emulation in the El Torito
+	    catalog.
+
+	t   Specifies the El Torito load segment.  If not specified, defaults to
+	    0x7C0
+
+Example:
+ -bootdata:2#p0,bc:\location\etfsboot.com#pEF,bc:\location\ESPBootFile
+This specifies a multi-boot image with the default image having an x86 boot
+sector that launches the ETFSBOOT.com bootcode, and a secondary EFI boot
+image that launches ESPBootFile when booted
+</pre><pre>oscdimg -help Optimize</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+Optimize options: These options configure optimizations
+
+	-o  This option will encode duplicate files only once.  This uses
+	    a MD5 hashing algorithm to compare files.
+	-oc This option will encode duplicate files only once.  It does 
+	    a binary compare on the files and is slower.
+	-oi This option will ignore diamond compression timestamps when 
+	    comparing files.
+</pre><pre>oscdimg -help Order</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+Order options: These options allow specific file layout on disk
+
+	-y5  This option will write all files in an i386 directory first and in
+	     reverse sort order.
+	-yo  This option specifies a text file that has a layout for the files
+	     to be placed in the image.  The rules for this file are listed
+	     below.
+
+Rules for order file.
+
+1. The order file shall be in ANSI.
+2. The order file shall end in a new line.
+3. The order file shall have one file per line.
+4. Each file shall be specified relative to the root of the image.
+5. Each file shall be specified as a long file name.  No short names are
+   allowed.
+6. Each file path cannot be longer than MAX_PATH, including volume name.
+
+For example: 
+
+If d:\cdimage looked as follows:
+d:\cdimage\1\1.txt
+d:\cdimage\2\2.txt
+d:\cdimage\3\3.txt
+d:\cdimage\3\3_5.txt
+d:\cdimage\This is a long name.txt
+
+And you ran the following: cdimage -yod:\orderfile.txt d:\cdimage image.iso
+
+Then d:\orderfile.txt might look like this:
+
+This is a long name.txt
+1\1.txt
+3\3_5.txt
+2\2.txt
+3\3.txt
+
+Note that not all files must be listed in the order file.  
+Any files that are not listed in this file shall be ordered as they would if 
+there was no ordering file.
+
+NOTE: The (-yo) option will take precedence over the (-y5) option.  Also, see
+      the DVD help for ordering information on DVD Video/Audio disks.
+</pre><pre>oscdimg -help DVD</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+DVD options: These options allow for DVD Video/Audio disk creation
+
+	-uv  This option specifies that UDF Video Zone compatibility is to
+	     be enforced.  This means UDF 1.02 and ISO 9660 are written to
+	     the disk.  Also, all files in the VIDEO_TS, AUDIO_TS, and 
+	     JACKET_P directories will be written first.  These directories
+	     take precedence over all other ordering rules used for this image.
+	-ut  This option is used to truncate the ISO 9660 portion of the image.
+	     When this option is used, only the VIDEO_TS, AUDIO_TS, and 
+	     JACKET_P directories will be visible from the ISO 9660 file
+	     system.
+
+NOTE: These options cannot be combined with ISO, Joliet, or UDF options
+NOTE: UDF file and directory names in VIDEO_TS, AUDIO_TS, and JACKET_P
+      will use 8-bit characters as specified by the DVD Video spec.
+</pre><pre>oscdimg -help Mesg</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+Mesg options: These options allow customization for what information is shown
+
+	-w1 This option reports all non-ISO or non-Joliet compliant file names
+	    or depths
+	-w2 This option reports all non-DOS compliant file names.
+	-w3 This option reports all zero-length files.
+	-w4 This option reports each file name copied to the image.
+	-yd This option suppresses warnings for non-identical files with the
+	    same initial 64K.
+	-a  This option displays the allocation summary for files and
+	    directories.
+	-os This option will show duplicate files when creating the image.
+</pre><pre>oscdimg -help Other</pre><pre>
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Usage: OSCDIMG [options] sourceroot targetfile
+
+General Options: These are general options on image creation
+
+	-l  This options specifies the volume label.  This should be 32
+	    characters or less.  There is no space after this option.
+	    Example: -lMyVolume
+	-t  This option specifies a time stamp for all files and directories
+	    on the image.  Example: -t12/31/2000,15:01:00
+	-g  This option  makes all times encoded in GMT time rather than the
+	    local time.
+	-h  This option will include all hidden files and directories under the
+	    source path for this image.
+	-c  This option will use ANSI file names instead of OEM file names.
+	-y6 This options allows directory records to be exactly aligned at the
+	    end of sectors.
+	-yw This option opens source files with write sharing.
+	-k  This option creates an image even if it fails to open some of the
+	    source files.
+	-q  This option just scans the source files only; it does not create
+	    an image.
+	-m  This option is used to ignore the maximum size limit or an image.
+	-maxsize This option overrides the default maximum size of an image.
+	         The default value is a 74 minute CD unless UDF is used, in
+	         which case the default is no maximum size.  The value
+	         specified here is represented in MB.
+	         Example: -maxsize:4096 limits the image to 4096MB.
+	-r  This option resolves symbolic links to their target location.
+
+NOTE: Option (-m) cannot be used with option (-maxsize).</pre><pre>
+Microsoft Windows XP [版本 5.1.2600]
+(C) Copyright 1985-2001 Microsoft Corp.
+
+C:\Program Files>oscdimg -lMATLAB_R2012a -t02/09/2012,00:00:00 -g -h -m -r -j2 MATLAB\ C:\MATLAB_R2012a.ISO
+
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Scanning source tree (179000 files in 16762 directories)
+Scanning source tree complete (179430 files in 16781 directories)
+
+Computing directory information complete
+
+Image file is 6233239552 bytes
+
+Writing 179430 files in 16781 directories to C:\MATLAB_R2012a.ISO
+
+100% complete
+
+Final image file is 6233239552 bytes
+
+Done.
+
+C:\Program Files></pre>
+若遇到ISO/Joliet不支持的长文件名，则可改用UDF，如：<br />
+<pre>Microsoft Windows XP [版本 5.1.2600]
+(C) Copyright 1985-2001 Microsoft Corp.
+
+C:\Program Files>oscdimg -lMATLAB_R2013a -t02/18/2013,00:00:00 -g -h -m -r -j2 MATLAB\ C:\MATLAB_R2013a.ISO
+
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Scanning source tree (6500 files in 101 directories)
+ERROR: Unicode filename "\R2013a\help\bioinfo\examples\differential-analysis-of-complex-protein-and-metabolite-mixtures-using-liquid-chromatography-mass-spectrometry-lc-ms.html" is longer than 110 characters
+
+
+C:\Program Files>oscdimg -lMATLAB_R2013a -t02/18/2013,00:00:00 -g -h -m -r -u2 -udfver200 MATLAB\ C:\MATLAB_R2013a.ISO
+
+OSCDIMG 2.56 CD-ROM and DVD-ROM Premastering Utility
+Copyright (C) Microsoft, 1993-2012. All rights reserved.
+Licensed only for producing Microsoft authorized content.
+
+
+Scanning source tree (320000 files in 17928 directories)
+Scanning source tree complete (320041 files in 17933 directories)
+
+Computing directory information complete
+
+Image file is 9521659904 bytes
+
+Writing 320041 files in 17933 directories to C:\MATLAB_R2013a.ISO
+
+100% complete
+
+Final image file is 10213820416 bytes
+
+Done.
+
+C:\Program Files></pre>
+ </body>
+</html>

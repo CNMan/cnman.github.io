@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenConnet Server</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+ </head>
+ <body>
+  <div class="container">
+<h1>安装配置OpenConnet Server</h1>
+查看"公网IP地址"对应的网卡名称（一般为eth0、eth1...或ens0、ens1...），替换下面配置中的eth0<br />
+<pre>ip addr</pre>
+<h2>DEB系(Debian、Ubuntu、Deepin等)</h2>
+1、更新系统<br />
+<pre>apt-get update -y
+apt-get upgrade -y</pre>
+2、安装软件包<br />
+<pre>apt-get install ocserv gnutls-bin -y</pre>
+3、修改配置文件<br />
+(1)、/etc/sysctl.conf<br />
+去掉net.ipv4.ip_forward=1前面的#<br />
+<pre>sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+sed -i 's/#net.ipv6.conf.all.forwarding=1/net.ipv6.conf.all.forwarding=1/g' /etc/sysctl.conf
+sysctl -p</pre>
+(2)、/etc/ocserv/ocserv.conf<br />
+<pre>auth = "certificate"
+tcp-port = 443
+udp-port = 443
+run-as-user = nobody
+run-as-group = daemon
+socket-file = /var/run/ocserv-socket
+server-cert = /etc/ocserv/server-cert.pem
+server-key = /etc/ocserv/server-key.pem
+ca-cert = /etc/ocserv/ca-cert.pem
+isolate-workers = true
+max-clients = 0
+max-same-clients = 0
+rate-limit-ms = 0
+server-stats-reset-time = 604800
+keepalive = 30
+dpd = 90
+mobile-dpd = 1800
+switch-to-tcp-timeout = 25
+try-mtu-discovery = false
+cert-user-oid = 2.5.4.3
+tls-priorities = "NORMAL:%SERVER_PRECEDENCE:%COMPAT:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1"
+auth-timeout = 240
+idle-timeout = 86400
+mobile-idle-timeout = 86400
+min-reauth-time = 300
+max-ban-score = 80
+ban-reset-time = 1200
+cookie-timeout = 300
+deny-roaming = false
+rekey-time = 172800
+rekey-method = ssl
+use-occtl = true
+pid-file = /var/run/ocserv.pid
+log-level = 1
+device = vpns
+predictable-ips = true
+default-domain = example.com
+ipv4-network = 192.168.1.0
+ipv4-netmask = 255.255.255.0
+dns = 8.8.8.8
+dns = 8.8.4.4
+ping-leases = false
+cisco-client-compat = true
+dtls-legacy = true
+client-bypass-protocol = false</pre>
+分流需再添加路由表：<a href="https://raw.githubusercontent.com/CNMan/ocserv-cn-no-route/master/cn-no-route.txt">https://raw.githubusercontent.com/CNMan/ocserv-cn-no-route/master/cn-no-route.txt</a><br />
+4、生成并导出证书<br />
+ca.tmpl<br />
+<pre>cn = "Anyconnect VPN CA"
+organization = "Anyconnect VPN"
+serial = 1
+expiration_days = -1
+ca
+signing_key
+cert_signing_key
+crl_signing_key</pre>
+<pre>certtool --generate-privkey --outfile ca-key.pem --rsa --sec-param high
+certtool --generate-self-signed --load-privkey ca-key.pem --template ca.tmpl --outfile ca-cert.pem --hash SHA256</pre>
+server.tmpl(把100.101.102.103换成自己的服务器IP)<br />
+<pre>cn = "Anyconnect VPN Server"
+organization = "Anyconnect VPN"
+ip_address = "100.101.102.103"
+expiration_days = -1
+signing_key
+encryption_key
+tls_www_server</pre>
+<pre>certtool --generate-privkey --outfile server-key.pem --rsa --sec-param high
+certtool --generate-certificate --load-privkey server-key.pem --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem --template server.tmpl --outfile server-cert.pem --hash SHA256</pre>
+user.tmpl<br />
+<pre>cn = "Anyconnect VPN Client"
+unit = "vpn"
+expiration_days = -1
+signing_key
+tls_www_client</pre>
+<pre>certtool --generate-privkey --outfile user-key.pem --rsa --sec-param high
+certtool --generate-certificate --load-privkey user-key.pem --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem --template user.tmpl --outfile user-cert.pem --hash SHA256</pre>
+<pre>openssl pkcs12 -export -inkey user-key.pem -in user-cert.pem -certfile ca-cert.pem -out user.p12</pre>
+把user.p12下载到电脑、手机等设备上导入Cisco AnyConnect VPN<br />
+5、重启ocserv<br />
+<pre>systemctl restart ocserv</pre>
+6、防火墙设置<br />
+<pre>iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+iptables -I INPUT -i lo -j ACCEPT
+iptables -I INPUT -m state --state INVALID -j DROP
+iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -I INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+iptables -I INPUT -p udp -m udp --dport 443 -j ACCEPT
+iptables -I FORWARD -m state --state INVALID -j DROP
+iptables -I FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -I FORWARD -s 192.168.1.0/24 -j ACCEPT
+iptables -I FORWARD -d 192.168.1.0/24 -j ACCEPT
+iptables -I OUTPUT -o lo -j ACCEPT
+iptables -I OUTPUT -m state --state INVALID -j DROP
+iptables -I OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT</pre>
+<pre>iptables-save > /etc/iptables.ipv4.nat</pre>
+把iptables-restore < /etc/iptables.ipv4.nat加到/etc/rc.local文件最后一行exit 0前面<br />
+<br />
+有些人喜欢用ufw，可以参考下面规则：<br />
+<!--
+修改ufw默认规则：<br />
+<pre>sed -i 's/DEFAULT_INPUT_POLICY="DROP"/DEFAULT_INPUT_POLICY="ACCEPT"/g' /etc/default/ufw
+sed -i 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/g' /etc/default/ufw
+sed -i 's/DEFAULT_APPLICATION_POLICY="SKIP"/DEFAULT_APPLICATION_POLICY="ACCEPT"/g' /etc/default/ufw</pre>
+-->
+去掉/etc/ufw/sysctl.conf中net/ipv4/ip_forward=1等前面的#<br />
+<pre>sed -i 's/#net\/ipv4\/ip_forward=1/net\/ipv4\/ip_forward=1/g' /etc/ufw/sysctl.conf
+sed -i 's/#net\/ipv6\/conf\/default\/forwarding=1/net\/ipv6\/conf\/default\/forwarding=1/g' /etc/ufw/sysctl.conf
+sed -i 's/#net\/ipv6\/conf\/all\/forwarding=1/net\/ipv6\/conf\/all\/forwarding=1/g' /etc/ufw/sysctl.conf</pre>
+在/etc/ufw/before.rules中*filter之前加上：<br />
+<pre>*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+COMMIT</pre>
+在/etc/ufw/before.rules中# End required lines之后加上：<br />
+<pre>
+-A ufw-before-input -p tcp -m tcp --dport 443 -j ACCEPT
+-A ufw-before-input -p udp -m udp --dport 443 -j ACCEPT
+-A ufw-before-forward -s 192.168.1.0/24 -j ACCEPT
+-A ufw-before-forward -d 192.168.1.0/24 -j ACCEPT</pre>
+<pre>ufw reload</pre>
+<h2>RPM系(RHEL、CentOS、Fedora等)</h2>
+1、更新系统<br />
+<pre>yum update -y</pre>
+2、安装软件包<br />
+<pre>yum install ocserv gnutls-utils -y</pre>
+剩下的步骤一样<br />
+6、防火墙设置<br />
+有些人喜欢用FirewallD，可以参考下面规则：<br />
+<pre>firewall-cmd --permanent --add-port=443/tcp
+firewall-cmd --permanent --add-port=443/udp
+firewall-cmd --permanent --add-interface=vpns0 --add-interface=eth0
+firewall-cmd --permanent --add-forward
+firewall-cmd --permanent --add-masquerade
+firewall-cmd --reload</pre>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>腾讯云轻量应用服务器重装Debian 11操作系统</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+ </head>
+ <body>
+  <div class="container">
+<h1>腾讯云轻量应用服务器重装Debian 11操作系统</h1>
+<font color="red">开搞之前先备份系统或重要文件！<br />
+开搞之前先备份系统或重要文件！<br />
+开搞之前先备份系统或重要文件！<br /></font>
+<br />
+先重点参考以下两篇，我只记录了操作过程，没有图片和注释：<br />
+<a href="https://lala.im/7226.html">https://lala.im/7226.html</a><br />
+<a href="https://lala.im/7233.html">https://lala.im/7233.html</a><br />
+<br />
+参考<a href="https://cloud.tencent.com/document/product/1207/44576">官方文档</a>登录<a href="https://console.cloud.tencent.com/lighthouse/instance/index">轻量应用服务器控制台</a>重置操作系统为Debian 10<br />
+卸载监控、云盾等并重启<br />
+<pre>systemctl stop tat_agent
+systemctl disable tat_agent
+rm -f /etc/systemd/system/tat_agent.service
+rm -rf /usr/local/qcloud/
+rm -rf /usr/local/sa/
+reboot</pre>
+<pre>mkdir /boot/debian && cd /boot/debian
+wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
+wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
+gunzip initrd.gz</pre>
+<a href="https://www.debian.org/releases/stable/example-preseed.txt">https://www.debian.org/releases/stable/example-preseed.txt</a><br />
+<pre>nano preseed.cfg</pre>
+<pre>d-i debian-installer/locale string en_US
+d-i keyboard-configuration/xkb-keymap select us
+d-i netcfg/choose_interface select auto
+d-i netcfg/get_hostname string unassigned-hostname
+d-i netcfg/get_domain string unassigned-domain
+d-i netcfg/hostname string localhost
+d-i netcfg/wireless_wep string
+d-i mirror/country string manual
+d-i mirror/http/hostname string ftp.hk.debian.org
+d-i mirror/http/directory string /debian
+d-i mirror/http/proxy string
+d-i passwd/root-login boolean true
+d-i passwd/make-user boolean false
+d-i passwd/root-password password Yu$a87StAGaz
+d-i passwd/root-password-again password Yu$a87StAGaz
+d-i clock-setup/utc boolean true
+d-i time/zone string UTC
+d-i clock-setup/ntp boolean true
+d-i partman-auto/disk string /dev/vda
+d-i partman-auto/method string regular
+d-i partman-auto/choose_recipe select atomic
+d-i partman-md/device_remove_md boolean true
+d-i partman-lvm/device_remove_lvm boolean true
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true
+d-i apt-setup/cdrom/set-first boolean false
+d-i apt-setup/cdrom/set-next boolean false
+d-i apt-setup/cdrom/set-failed boolean false
+tasksel tasksel/first multiselect standard
+d-i pkgsel/include string openssh-server
+d-i pkgsel/upgrade select none
+popularity-contest popularity-contest/participate boolean false
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/with_other_os boolean true
+d-i grub-installer/bootdev string /dev/vda
+d-i finish-install/reboot_in_progress note
+d-i preseed/late_command string in-target sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config; in-target sed -i 's/#PubkeyAuthentication.*/PubkeyAuthentication yes/g' /etc/ssh/sshd_config; in-target sed -i 's/HashKnownHosts.*/HashKnownHosts no/g' /etc/ssh/ssh_config; in-target sed -i 's/#net.ipv4.ip_forward.*/net.ipv4.ip_forward=1/g' /etc/sysctl.conf; in-target sysctl -p</pre>
+<pre>echo preseed.cfg | cpio -H newc -o -A -F initrd
+gzip initrd</pre>
+<pre>nano /etc/grub.d/40_custom</pre>
+<pre>#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+menuentry 'Install Debian 11' {
+set root='hd0,msdos1'
+linux /boot/debian/linux
+initrd /boot/debian/initrd.gz
+}</pre>
+<pre>update-grub</pre>
+<pre>sed -i 's/GRUB_DEFAULT=0/GRUB_DEFAULT=2/g' /etc/default/grub</pre>
+<pre>update-grub</pre>
+<pre>reboot</pre>
+<br />
+以下是我的初始化脚本，仅供参考：<br />
+上传.ssh/、.tgeraser/、.gitconfig到/root/<br />
+上传ocserv/、crontab、iptables.ipv4.nat、rc.local到/etc/<br />
+<pre>chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/config
+chmod 600 ~/.ssh/id_ecdsa
+chmod 600 ~/.ssh/id_ecdsa.pub
+chmod 600 ~/.ssh/id_ed25519
+chmod 600 ~/.ssh/id_ed25519.pub
+chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa.pub
+chmod 600 ~/.ssh/known_hosts
+chmod +x /etc/rc.local
+sysctl -p
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install cabextract
+apt-get -y install curl
+apt-get -y install git
+apt-get -y install iptables
+apt-get -y install ocserv
+apt-get -y install python3-docopt
+apt-get -y install python3-netaddr
+apt-get -y install python3-pip
+apt-get -y install python3-pyaes
+apt-get -y install python3-pyasn1
+#apt-get -y install python3-pyyaml
+apt-get -y install python3-requests
+apt-get -y install python3-rsa
+#apt-get -y install python3-telethon
+#apt-get -y install python3-tgeraser
+apt-get -y install python3-yaml</pre>
+  </div>
+ </body>
+</html>

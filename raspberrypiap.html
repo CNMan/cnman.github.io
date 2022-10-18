@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RaspberryPi AP</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+ </head>
+ <body>
+  <div class="container">
+參考：<a href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md">Setting up a Raspberry Pi as a routed wireless access point</a><br />
+<br />
+1.1：安裝hostapd：<br />
+<pre>sudo apt-get install hostapd
+sudo systemctl stop hostapd
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd</pre>
+1.2：配置hostapd：<br />
+<pre>sudo nano /etc/hostapd/hostapd.conf</pre>
+加入以下：<br />
+<pre>country_code=CN
+interface=wlan0
+ssid=RaspberryPi    #網絡名稱
+hw_mode=g    #a = IEEE 802.11a (5 GHz)；b = IEEE 802.11b (2.4 GHz)；g = IEEE 802.11g (2.4 GHz)；ad = IEEE 802.11ad (60 GHz) 
+channel=7
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=12345678    #密碼
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP</pre>
+<pre>sudo nano /etc/default/hostapd</pre>
+在最後添加：<br />
+<pre>DAEMON_CONF="/etc/hostapd/hostapd.conf"</pre>
+<pre>sudo systemctl start hostapd</pre>
+2.1：安裝dnsmasq：<br />
+<pre>sudo apt-get install dnsmasq
+sudo systemctl stop dnsmasq</pre>
+2.2：配置dnsmasq：<br />
+<pre>sudo nano /etc/dnsmasq.conf</pre>
+<pre>interface=wlan0
+dhcp-range=192.168.4.2,192.168.4.255,255.255.255.0,24h
+dhcp-host=f0:7b:cb:a2:4d:54,192.168.4.2
+dhcp-host=00:0c:29:99:f7:c6,192.168.4.3</pre>
+<pre>sudo systemctl start dnsmasq</pre>
+3.1：安裝dhcpcd：<br />
+<pre>sudo apt-get install dhcpcd
+sudo systemctl stop dhcpcd</pre>
+3.2：配置dhcpcd：<br />
+<pre>sudo nano /etc/dhcpcd.conf</pre>
+在最後添加：<br />
+<pre>interface wlan0
+    static ip_address=192.168.4.1/24
+    nohook wpa_supplicant</pre>
+<pre>sudo rfkill unblock wlan</pre>
+<pre>sudo systemctl start dhcpcd</pre>
+4：啟用IP轉發：<br />
+<pre>sudo nano /etc/sysctl.conf</pre>
+去掉<pre>net.ipv4.ip_forward=1</pre>前面的註釋符號#<br />
+<pre>sudo sysctl -p</pre>
+5：配置防火牆規則：<br />
+<pre>sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE</pre>
+<pre>sudo iptables-save > /home/pi/iptables.ipv4.nat</pre>
+<pre>sudo nano /etc/rc.local</pre>
+把<pre>iptables-restore < /home/pi/iptables.ipv4.nat</pre>加到最後一行<pre>exit 0</pre>的前面。<br />
+6:重啓樹莓派：<br />
+<pre>sudo reboot</pre>
+  </div>
+ </body>
+</html>
