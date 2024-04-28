@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Windows Server 2022</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+  </head>
+ <body>
+  <div class="container">
+<a href="https://www.windowsworkstation.com/win2016-2019/">https://www.windowsworkstation.com/win2016-2019/</a><br />
+<a href="https://forums.mydigitallife.net/threads/diy-server-2022-to-workstation-post-install-settings.84501/">https://forums.mydigitallife.net/threads/diy-server-2022-to-workstation-post-install-settings.84501/</a><br />
+<a href="https://forums.mydigitallife.net/threads/convert-windows-server-to-workstation-offline.84632/">https://forums.mydigitallife.net/threads/convert-windows-server-to-workstation-offline.84632/</a><br />
+<a href="https://github.com/eaksel/packer-Win2022/blob/main/scripts/setup.ps1">https://github.com/eaksel/packer-Win2022/blob/main/scripts/setup.ps1</a><br />
+<br />
+<pre>slmgr.vbs /skms kms.digiboy.ir
+slmgr.vbs /ato</pre><br />
+<pre>Rename-Computer -NewName "XXXXXXXX"</pre><br />
+<pre>Set-LocalUser Administrator -PasswordNeverExpires $true</pre><br />
+<pre>dism /online /Disable-Feature /FeatureName:AzureArcSetup</pre><br />
+<pre>dism /online /Disable-Feature /FeatureName:Windows-Defender</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /v "EnableFirewall" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile" /v "EnableFirewall" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile" /v "EnableFirewall" /t REG_DWORD /d "0" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v RegisteredOrganization /t REG_SZ /d "" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion" /v RegisteredOrganization /t REG_SZ /d "" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v RegisteredOwner /t REG_SZ /d "" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion" /v RegisteredOwner /t REG_SZ /d "" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ServerManager" /v "DoNotOpenServerManagerAtLogon" /t REG_DWORD /d "1" /f</pre><br />
+<pre>dism /online /Enable-Feature /FeatureName:NetFx3 /all</pre><br />
+<pre>dism /online /Enable-Feature /FeatureName:ServerMediaFoundation /all</pre><br />
+<pre>dism /online /Enable-Feature /FeatureName:WirelessNetworking /all</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AudioEndpointBuilder" /v "Start" /t REG_DWORD /d "2" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Audiosrv" /v "Start" /t REG_DWORD /d "2" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "DisableCAD" /t REG_DWORD /d "1" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisableCAD" /t REG_DWORD /d "1" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisableCAD" /t REG_DWORD /d "1" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ShutdownWithoutLogon" /t REG_DWORD /d "1" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System" /v "ShutdownWithoutLogon" /t REG_DWORD /d "1" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" /v "IsInstalled" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" /v "IsInstalled" /t REG_DWORD /d "0" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Reliability" /v "ShutDownReasonOn" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows NT\Reliability" /v "ShutDownReasonOn" /t REG_DWORD /d "0" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel" /v "DisableExceptionChainValidation" /t REG_DWORD /d "1" /f</pre><br />
+<pre>reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}" /f
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "LaunchTo" /t REG_DWORD /d "1" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "EnableAutoTray" /t REG_DWORD /d "0" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarSmallIcons" /t REG_DWORD /d "1" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarGlomLevel" /t REG_DWORD /d "1" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d "1" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideDrivesWithNoMedia" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSyncProviderNotifications" /t REG_DWORD /d "0" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power" /v "HiberFileSizePercent" /t REG_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f</pre><br />
+<pre>reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecentlyAddedApps"  /t REG_DWORD /d "1" /f</pre><br />
+<table class="table table-bordered">
+<tr><th>FeatureName</th><th>State</th></tr>
+<tr><td>ActiveDirectory-PowerShell</td><td>Disabled</td></tr>
+<tr><td>ADCertificateServicesManagementTools</td><td>Disabled</td></tr>
+<tr><td>ADCertificateServicesRole</td><td>Disabled</td></tr>
+<tr><td>AppServer</td><td>Disabled</td></tr>
+<tr><td>AuthManager</td><td>Disabled</td></tr>
+<tr><td>AzureArcSetup</td><td>Enabled</td></tr>
+<tr><td>BdeAducExtTool</td><td>Disabled</td></tr>
+<tr><td>BiometricFramework</td><td>Disabled</td></tr>
+<tr><td>BitLocker</td><td>Disabled</td></tr>
+<tr><td>BitLocker-NetworkUnlock</td><td>Disabled</td></tr>
+<tr><td>BitLocker-RemoteAdminTool</td><td>Disabled</td></tr>
+<tr><td>Bitlocker-Utilities</td><td>Disabled</td></tr>
+<tr><td>BITS</td><td>Disabled</td></tr>
+<tr><td>BITSExtensions-AdminPack</td><td>Disabled</td></tr>
+<tr><td>BITSExtensions-Upload</td><td>Disabled</td></tr>
+<tr><td>CCFFilter</td><td>Disabled</td></tr>
+<tr><td>CertificateEnrollmentPolicyServer</td><td>Disabled</td></tr>
+<tr><td>CertificateEnrollmentServer</td><td>Disabled</td></tr>
+<tr><td>CertificateServices</td><td>Disabled</td></tr>
+<tr><td>CertificateServicesManagementTools</td><td>Disabled</td></tr>
+<tr><td>Client-ProjFS</td><td>Disabled</td></tr>
+<tr><td>ClientForNFS-Infrastructure</td><td>Disabled</td></tr>
+<tr><td>Containers</td><td>Disabled</td></tr>
+<tr><td>Containers-HNS</td><td>Disabled</td></tr>
+<tr><td>Containers-SDN</td><td>Disabled</td></tr>
+<tr><td>CoreFileServer</td><td>Disabled</td></tr>
+<tr><td>DamgmtTools</td><td>Disabled</td></tr>
+<tr><td>DataCenterBridging</td><td>Disabled</td></tr>
+<tr><td>DataCenterBridging-LLDP-Tools</td><td>Disabled</td></tr>
+<tr><td>Dedup-Core</td><td>Disabled</td></tr>
+<tr><td>DeviceHealthAttestationService</td><td>Disabled</td></tr>
+<tr><td>DfsMgmt</td><td>Disabled</td></tr>
+<tr><td>DFSN-Server</td><td>Disabled</td></tr>
+<tr><td>DFSR-Infrastructure-ServerEdition</td><td>Disabled</td></tr>
+<tr><td>DHCPServer</td><td>Disabled</td></tr>
+<tr><td>DHCPServer-Tools</td><td>Disabled</td></tr>
+<tr><td>DirectoryServices-ADAM</td><td>Disabled</td></tr>
+<tr><td>DirectoryServices-ADAM-Tools</td><td>Disabled</td></tr>
+<tr><td>DirectoryServices-AdministrativeCenter</td><td>Disabled</td></tr>
+<tr><td>DirectoryServices-DomainController</td><td>Disabled</td></tr>
+<tr><td>DirectoryServices-DomainController-Tools</td><td>Disabled</td></tr>
+<tr><td>DirectoryServices-ISM-Smtp</td><td>Disabled</td></tr>
+<tr><td>DirectPlay</td><td>Disabled</td></tr>
+<tr><td>DiskIo-QoS</td><td>Disabled</td></tr>
+<tr><td>DNS-Server-Full-Role</td><td>Disabled</td></tr>
+<tr><td>DNS-Server-Tools</td><td>Disabled</td></tr>
+<tr><td>DSC-Service</td><td>Disabled</td></tr>
+<tr><td>EnhancedStorage</td><td>Disabled</td></tr>
+<tr><td>FabricShieldedTools</td><td>Disabled</td></tr>
+<tr><td>FailoverCluster-AdminPak</td><td>Disabled</td></tr>
+<tr><td>FailoverCluster-AutomationServer</td><td>Disabled</td></tr>
+<tr><td>FailoverCluster-CmdInterface</td><td>Disabled</td></tr>
+<tr><td>FailoverCluster-FullServer</td><td>Disabled</td></tr>
+<tr><td>FailoverCluster-Mgmt</td><td>Disabled</td></tr>
+<tr><td>FailoverCluster-PowerShell</td><td>Disabled</td></tr>
+<tr><td>FaxServiceConfigRole</td><td>Disabled</td></tr>
+<tr><td>FaxServiceRole</td><td>Disabled</td></tr>
+<tr><td>File-Services</td><td>Disabled</td></tr>
+<tr><td>File-Services-Search-Service</td><td>Disabled</td></tr>
+<tr><td>FileAndStorage-Services</td><td>Enabled</td></tr>
+<tr><td>FileServerVSSAgent</td><td>Disabled</td></tr>
+<tr><td>FRS-Infrastructure</td><td>Disabled</td></tr>
+<tr><td>FSRM-Infrastructure</td><td>Disabled</td></tr>
+<tr><td>FSRM-Infrastructure-Services</td><td>Disabled</td></tr>
+<tr><td>FSRM-Management</td><td>Disabled</td></tr>
+<tr><td>Gateway</td><td>Disabled</td></tr>
+<tr><td>Gateway-UI</td><td>Disabled</td></tr>
+<tr><td>HardenedFabricEncryptionTask</td><td>Disabled</td></tr>
+<tr><td>HostGuardian</td><td>Disabled</td></tr>
+<tr><td>HostGuardianService-Package</td><td>Disabled</td></tr>
+<tr><td>HypervisorPlatform</td><td>Disabled</td></tr>
+<tr><td>IdentityServer-SecurityTokenService</td><td>Disabled</td></tr>
+<tr><td>IIS-ApplicationDevelopment</td><td>Disabled</td></tr>
+<tr><td>IIS-ApplicationInit</td><td>Disabled</td></tr>
+<tr><td>IIS-ASP</td><td>Disabled</td></tr>
+<tr><td>IIS-ASPNET</td><td>Disabled</td></tr>
+<tr><td>IIS-ASPNET45</td><td>Disabled</td></tr>
+<tr><td>IIS-BasicAuthentication</td><td>Disabled</td></tr>
+<tr><td>IIS-CertProvider</td><td>Disabled</td></tr>
+<tr><td>IIS-CGI</td><td>Disabled</td></tr>
+<tr><td>IIS-ClientCertificateMappingAuthentication</td><td>Disabled</td></tr>
+<tr><td>IIS-CommonHttpFeatures</td><td>Disabled</td></tr>
+<tr><td>IIS-CustomLogging</td><td>Disabled</td></tr>
+<tr><td>IIS-DefaultDocument</td><td>Disabled</td></tr>
+<tr><td>IIS-DigestAuthentication</td><td>Disabled</td></tr>
+<tr><td>IIS-DirectoryBrowsing</td><td>Disabled</td></tr>
+<tr><td>IIS-FTPExtensibility</td><td>Disabled</td></tr>
+<tr><td>IIS-FTPServer</td><td>Disabled</td></tr>
+<tr><td>IIS-FTPSvc</td><td>Disabled</td></tr>
+<tr><td>IIS-HealthAndDiagnostics</td><td>Disabled</td></tr>
+<tr><td>IIS-HostableWebCore</td><td>Disabled</td></tr>
+<tr><td>IIS-HttpCompressionDynamic</td><td>Disabled</td></tr>
+<tr><td>IIS-HttpCompressionStatic</td><td>Disabled</td></tr>
+<tr><td>IIS-HttpErrors</td><td>Disabled</td></tr>
+<tr><td>IIS-HttpLogging</td><td>Disabled</td></tr>
+<tr><td>IIS-HttpRedirect</td><td>Disabled</td></tr>
+<tr><td>IIS-HttpTracing</td><td>Disabled</td></tr>
+<tr><td>IIS-IIS6ManagementCompatibility</td><td>Disabled</td></tr>
+<tr><td>IIS-IISCertificateMappingAuthentication</td><td>Disabled</td></tr>
+<tr><td>IIS-IPSecurity</td><td>Disabled</td></tr>
+<tr><td>IIS-ISAPIExtensions</td><td>Disabled</td></tr>
+<tr><td>IIS-ISAPIFilter</td><td>Disabled</td></tr>
+<tr><td>IIS-LegacyScripts</td><td>Disabled</td></tr>
+<tr><td>IIS-LegacySnapIn</td><td>Disabled</td></tr>
+<tr><td>IIS-LoggingLibraries</td><td>Disabled</td></tr>
+<tr><td>IIS-ManagementConsole</td><td>Disabled</td></tr>
+<tr><td>IIS-ManagementScriptingTools</td><td>Disabled</td></tr>
+<tr><td>IIS-ManagementService</td><td>Disabled</td></tr>
+<tr><td>IIS-Metabase</td><td>Disabled</td></tr>
+<tr><td>IIS-NetFxExtensibility</td><td>Disabled</td></tr>
+<tr><td>IIS-NetFxExtensibility45</td><td>Disabled</td></tr>
+<tr><td>IIS-ODBCLogging</td><td>Disabled</td></tr>
+<tr><td>IIS-Performance</td><td>Disabled</td></tr>
+<tr><td>IIS-RequestFiltering</td><td>Disabled</td></tr>
+<tr><td>IIS-RequestMonitor</td><td>Disabled</td></tr>
+<tr><td>IIS-Security</td><td>Disabled</td></tr>
+<tr><td>IIS-ServerSideIncludes</td><td>Disabled</td></tr>
+<tr><td>IIS-StaticContent</td><td>Disabled</td></tr>
+<tr><td>IIS-URLAuthorization</td><td>Disabled</td></tr>
+<tr><td>IIS-WebDAV</td><td>Disabled</td></tr>
+<tr><td>IIS-WebServer</td><td>Disabled</td></tr>
+<tr><td>IIS-WebServerManagementTools</td><td>Disabled</td></tr>
+<tr><td>IIS-WebServerRole</td><td>Disabled</td></tr>
+<tr><td>IIS-WebSockets</td><td>Disabled</td></tr>
+<tr><td>IIS-WindowsAuthentication</td><td>Disabled</td></tr>
+<tr><td>IIS-WMICompatibility</td><td>Disabled</td></tr>
+<tr><td>Internet-Explorer-Optional-amd64</td><td>Enabled</td></tr>
+<tr><td>IPAMClientFeature</td><td>Disabled</td></tr>
+<tr><td>IPAMServerFeature</td><td>Disabled</td></tr>
+<tr><td>iSCSITargetServer</td><td>Disabled</td></tr>
+<tr><td>iSCSITargetServer-PowerShell</td><td>Disabled</td></tr>
+<tr><td>iSCSITargetStorageProviders</td><td>Disabled</td></tr>
+<tr><td>KeyDistributionService-PSH-Cmdlets</td><td>Enabled</td></tr>
+<tr><td>LegacyComponents</td><td>Disabled</td></tr>
+<tr><td>Licensing</td><td>Disabled</td></tr>
+<tr><td>Licensing-Diagnosis-UI</td><td>Disabled</td></tr>
+<tr><td>Licensing-UI</td><td>Disabled</td></tr>
+<tr><td>LightweightServer</td><td>Disabled</td></tr>
+<tr><td>ManagementOdata</td><td>Disabled</td></tr>
+<tr><td>MediaPlayback</td><td>Enabled</td></tr>
+<tr><td>Microsoft-Hyper-V</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Hyper-V-Management-Clients</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Hyper-V-Management-PowerShell</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Hyper-V-Offline</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Hyper-V-Online</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-Deployment-Services</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-Deployment-Services-Admin-Pack</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-Deployment-Services-Deployment-Server</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-Deployment-Services-Transport-Server</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-FCI-Client-Package</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-GroupPolicy-ServerAdminTools-Update</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-MultiPoint-Connector</td><td>Enabled</td></tr>
+<tr><td>Microsoft-Windows-PhotoBasic</td><td>Enabled</td></tr>
+<tr><td>Microsoft-Windows-Printing-PremiumTools</td><td>Enabled</td></tr>
+<tr><td>Microsoft-Windows-StorageService</td><td>Enabled</td></tr>
+<tr><td>Microsoft-Windows-Subsystem-Linux</td><td>Disabled</td></tr>
+<tr><td>Microsoft-Windows-Web-Services-for-Management-IIS-Extension</td><td>Disabled</td></tr>
+<tr><td>MicrosoftWindowsPowerShell</td><td>Enabled</td></tr>
+<tr><td>MicrosoftWindowsPowerShellRoot</td><td>Enabled</td></tr>
+<tr><td>MicrosoftWindowsPowerShellV2</td><td>Enabled</td></tr>
+<tr><td>MSMQ</td><td>Disabled</td></tr>
+<tr><td>MSMQ-ADIntegration</td><td>Disabled</td></tr>
+<tr><td>MSMQ-DCOMProxy</td><td>Disabled</td></tr>
+<tr><td>MSMQ-HTTP</td><td>Disabled</td></tr>
+<tr><td>MSMQ-Multicast</td><td>Disabled</td></tr>
+<tr><td>MSMQ-RoutingServer</td><td>Disabled</td></tr>
+<tr><td>MSMQ-Server</td><td>Disabled</td></tr>
+<tr><td>MSMQ-Services</td><td>Disabled</td></tr>
+<tr><td>MSMQ-Triggers</td><td>Disabled</td></tr>
+<tr><td>MSRDC-Infrastructure</td><td>Disabled</td></tr>
+<tr><td>MultipathIo</td><td>Disabled</td></tr>
+<tr><td>MultiPoint-Connector</td><td>Disabled</td></tr>
+<tr><td>MultiPoint-Connector-Services</td><td>Disabled</td></tr>
+<tr><td>MultiPoint-Tools</td><td>Disabled</td></tr>
+<tr><td>NetFx3</td><td>DisabledWithPayloadRemoved</td></tr>
+<tr><td>NetFx3ServerFeatures</td><td>Disabled</td></tr>
+<tr><td>NetFx4</td><td>Enabled</td></tr>
+<tr><td>NetFx4Extended-ASPNET45</td><td>Disabled</td></tr>
+<tr><td>NetFx4ServerFeatures</td><td>Enabled</td></tr>
+<tr><td>NetworkController</td><td>Disabled</td></tr>
+<tr><td>NetworkControllerTools</td><td>Disabled</td></tr>
+<tr><td>NetworkDeviceEnrollmentServices</td><td>Disabled</td></tr>
+<tr><td>NetworkLoadBalancingFullServer</td><td>Disabled</td></tr>
+<tr><td>NetworkLoadBalancingManagementClient</td><td>Disabled</td></tr>
+<tr><td>NetworkVirtualization</td><td>Disabled</td></tr>
+<tr><td>NFS-Administration</td><td>Disabled</td></tr>
+<tr><td>NPAS-Role</td><td>Disabled</td></tr>
+<tr><td>NPSManagementTools</td><td>Disabled</td></tr>
+<tr><td>NPSMMC</td><td>Disabled</td></tr>
+<tr><td>OEM-Appliance-OOBE</td><td>Disabled</td></tr>
+<tr><td>OnlineRevocationServices</td><td>Disabled</td></tr>
+<tr><td>OnlineRevocationServicesManagementTools</td><td>Disabled</td></tr>
+<tr><td>P2P-PnrpOnly</td><td>Disabled</td></tr>
+<tr><td>PeerDist</td><td>Disabled</td></tr>
+<tr><td>PKIClient-PSH-Cmdlets</td><td>Disabled</td></tr>
+<tr><td>Printing-AdminTools-Collection</td><td>Disabled</td></tr>
+<tr><td>Printing-Client</td><td>Enabled</td></tr>
+<tr><td>Printing-Client-Gui</td><td>Enabled</td></tr>
+<tr><td>Printing-InternetPrinting-Client</td><td>Disabled</td></tr>
+<tr><td>Printing-InternetPrinting-Server</td><td>Disabled</td></tr>
+<tr><td>Printing-LPDPrintService</td><td>Disabled</td></tr>
+<tr><td>Printing-LPRPortMonitor</td><td>Disabled</td></tr>
+<tr><td>Printing-PrintToPDFServices-Features</td><td>Enabled</td></tr>
+<tr><td>Printing-Server-Foundation-Features</td><td>Disabled</td></tr>
+<tr><td>Printing-Server-Role</td><td>Disabled</td></tr>
+<tr><td>Printing-XPSServices-Features</td><td>Enabled</td></tr>
+<tr><td>QWAVE</td><td>Disabled</td></tr>
+<tr><td>RasCMAK</td><td>Disabled</td></tr>
+<tr><td>RasRoutingProtocols</td><td>Disabled</td></tr>
+<tr><td>RasServerAdminTools</td><td>Disabled</td></tr>
+<tr><td>Remote-Desktop-Services</td><td>Disabled</td></tr>
+<tr><td>RemoteAccess</td><td>Disabled</td></tr>
+<tr><td>RemoteAccessMgmtTools</td><td>Disabled</td></tr>
+<tr><td>RemoteAccessPowerShell</td><td>Disabled</td></tr>
+<tr><td>RemoteAccessServer</td><td>Disabled</td></tr>
+<tr><td>RemoteAssistance</td><td>Disabled</td></tr>
+<tr><td>ResumeKeyFilter</td><td>Disabled</td></tr>
+<tr><td>RightsManagementServices</td><td>Disabled</td></tr>
+<tr><td>RightsManagementServices-AdminTools</td><td>Disabled</td></tr>
+<tr><td>RightsManagementServices-Role</td><td>Disabled</td></tr>
+<tr><td>RightsManagementServicesManagementTools</td><td>Disabled</td></tr>
+<tr><td>RMS-Federation</td><td>Disabled</td></tr>
+<tr><td>RPC-HTTP_Proxy</td><td>Disabled</td></tr>
+<tr><td>RSAT</td><td>Enabled</td></tr>
+<tr><td>RSAT-AD-Tools-Feature</td><td>Disabled</td></tr>
+<tr><td>RSAT-ADDS-Tools-Feature</td><td>Disabled</td></tr>
+<tr><td>RSAT-Hyper-V-Tools-Feature</td><td>Disabled</td></tr>
+<tr><td>RSAT-RDS-Tools-Feature</td><td>Disabled</td></tr>
+<tr><td>SBMgr-UI</td><td>Disabled</td></tr>
+<tr><td>SearchEngine-Client-Package</td><td>Enabled</td></tr>
+<tr><td>SearchEngine-Server-Package</td><td>Disabled</td></tr>
+<tr><td>Security-SPP-Vmw</td><td>Disabled</td></tr>
+<tr><td>Server-Core</td><td>Enabled</td></tr>
+<tr><td>Server-Drivers-General</td><td>Enabled</td></tr>
+<tr><td>Server-Drivers-Printers</td><td>Enabled</td></tr>
+<tr><td>Server-Gui-Mgmt</td><td>Enabled</td></tr>
+<tr><td>Server-Gui-Mgmt_onecore</td><td>Disabled</td></tr>
+<tr><td>Server-Manager-RSAT-File-Services</td><td>Disabled</td></tr>
+<tr><td>Server-Psh-Cmdlets</td><td>Enabled</td></tr>
+<tr><td>Server-RSAT-SNMP</td><td>Disabled</td></tr>
+<tr><td>Server-Shell</td><td>Enabled</td></tr>
+<tr><td>ServerCore-Drivers-General</td><td>Enabled</td></tr>
+<tr><td>ServerCore-Drivers-General-WOW64</td><td>Enabled</td></tr>
+<tr><td>ServerCore-WOW64</td><td>Enabled</td></tr>
+<tr><td>ServerCoreFonts-NonCritical-Fonts-BitmapFonts</td><td>Enabled</td></tr>
+<tr><td>ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts</td><td>Enabled</td></tr>
+<tr><td>ServerCoreFonts-NonCritical-Fonts-Support</td><td>Enabled</td></tr>
+<tr><td>ServerCoreFonts-NonCritical-Fonts-TrueType</td><td>Enabled</td></tr>
+<tr><td>ServerCoreFonts-NonCritical-Fonts-UAPFonts</td><td>Enabled</td></tr>
+<tr><td>ServerForNFS-Infrastructure</td><td>Disabled</td></tr>
+<tr><td>ServerManager-Core-RSAT</td><td>Disabled</td></tr>
+<tr><td>ServerManager-Core-RSAT-Feature-Tools</td><td>Disabled</td></tr>
+<tr><td>ServerManager-Core-RSAT-Role-Tools</td><td>Disabled</td></tr>
+<tr><td>ServerMediaFoundation</td><td>Disabled</td></tr>
+<tr><td>ServerMigration</td><td>Disabled</td></tr>
+<tr><td>ServicesForNFS-ServerAndClient</td><td>Disabled</td></tr>
+<tr><td>SessionDirectory</td><td>Disabled</td></tr>
+<tr><td>SetupAndBootEventCollection</td><td>Disabled</td></tr>
+<tr><td>ShieldedVMToolsAdminPack</td><td>Disabled</td></tr>
+<tr><td>SimpleTCP</td><td>Disabled</td></tr>
+<tr><td>SMB1Protocol</td><td>Disabled</td></tr>
+<tr><td>SMB1Protocol-Client</td><td>Disabled</td></tr>
+<tr><td>SMB1Protocol-Server</td><td>Disabled</td></tr>
+<tr><td>SMBBW</td><td>Disabled</td></tr>
+<tr><td>SmbDirect</td><td>Enabled</td></tr>
+<tr><td>SMBHashGeneration</td><td>Disabled</td></tr>
+<tr><td>SmbWitness</td><td>Disabled</td></tr>
+<tr><td>Smtpsvc-Admin-Update-Name</td><td>Disabled</td></tr>
+<tr><td>Smtpsvc-Service-Update-Name</td><td>Disabled</td></tr>
+<tr><td>SNMP</td><td>Disabled</td></tr>
+<tr><td>SoftwareLoadBalancer</td><td>Disabled</td></tr>
+<tr><td>Storage-Replica</td><td>Disabled</td></tr>
+<tr><td>Storage-Replica-AdminPack</td><td>Disabled</td></tr>
+<tr><td>Storage-Services</td><td>Enabled</td></tr>
+<tr><td>StorageMigrationService</td><td>Disabled</td></tr>
+<tr><td>StorageMigrationServiceManagement</td><td>Disabled</td></tr>
+<tr><td>StorageMigrationServiceProxy</td><td>Disabled</td></tr>
+<tr><td>SystemDataArchiver</td><td>Enabled</td></tr>
+<tr><td>SystemInsights</td><td>Disabled</td></tr>
+<tr><td>SystemInsightsManagement</td><td>Disabled</td></tr>
+<tr><td>TelnetClient</td><td>Disabled</td></tr>
+<tr><td>TFTP</td><td>Disabled</td></tr>
+<tr><td>TIFFIFilter</td><td>Disabled</td></tr>
+<tr><td>TlsSessionTicketKey-PSH-Cmdlets</td><td>Enabled</td></tr>
+<tr><td>Tpm-PSH-Cmdlets</td><td>Enabled</td></tr>
+<tr><td>UpdateServices</td><td>Disabled</td></tr>
+<tr><td>UpdateServices-API</td><td>Disabled</td></tr>
+<tr><td>UpdateServices-Database</td><td>Disabled</td></tr>
+<tr><td>UpdateServices-RSAT</td><td>Disabled</td></tr>
+<tr><td>UpdateServices-Services</td><td>Disabled</td></tr>
+<tr><td>UpdateServices-UI</td><td>Disabled</td></tr>
+<tr><td>UpdateServices-WidDatabase</td><td>Disabled</td></tr>
+<tr><td>VirtualMachinePlatform</td><td>Disabled</td></tr>
+<tr><td>VmHostAgent</td><td>Disabled</td></tr>
+<tr><td>VolumeActivation-Full-Role</td><td>Disabled</td></tr>
+<tr><td>WAS-ConfigurationAPI</td><td>Disabled</td></tr>
+<tr><td>WAS-NetFxEnvironment</td><td>Disabled</td></tr>
+<tr><td>WAS-ProcessModel</td><td>Disabled</td></tr>
+<tr><td>WAS-WindowsActivationService</td><td>Disabled</td></tr>
+<tr><td>WCF-HTTP-Activation</td><td>Disabled</td></tr>
+<tr><td>WCF-HTTP-Activation45</td><td>Disabled</td></tr>
+<tr><td>WCF-MSMQ-Activation45</td><td>Disabled</td></tr>
+<tr><td>WCF-NonHTTP-Activation</td><td>Disabled</td></tr>
+<tr><td>WCF-Pipe-Activation45</td><td>Disabled</td></tr>
+<tr><td>WCF-Services45</td><td>Enabled</td></tr>
+<tr><td>WCF-TCP-Activation45</td><td>Disabled</td></tr>
+<tr><td>WCF-TCP-PortSharing45</td><td>Enabled</td></tr>
+<tr><td>Web-Application-Proxy</td><td>Disabled</td></tr>
+<tr><td>WebAccess</td><td>Disabled</td></tr>
+<tr><td>WebDAV-Redirector</td><td>Disabled</td></tr>
+<tr><td>WebEnrollmentServices</td><td>Disabled</td></tr>
+<tr><td>Windows-Defender</td><td>Enabled</td></tr>
+<tr><td>Windows-Identity-Foundation</td><td>Disabled</td></tr>
+<tr><td>Windows-Internal-Database</td><td>Disabled</td></tr>
+<tr><td>WindowsMediaPlayer</td><td>Enabled</td></tr>
+<tr><td>WindowsPowerShellWebAccess</td><td>Disabled</td></tr>
+<tr><td>WindowsServerBackup</td><td>Disabled</td></tr>
+<tr><td>WindowsServerBackupSnapin</td><td>Enabled</td></tr>
+<tr><td>WindowsStorageManagementService</td><td>Disabled</td></tr>
+<tr><td>WINS-Server-Tools</td><td>Disabled</td></tr>
+<tr><td>WINSRuntime</td><td>Disabled</td></tr>
+<tr><td>WirelessNetworking</td><td>Disabled</td></tr>
+<tr><td>WMISnmpProvider</td><td>Disabled</td></tr>
+<tr><td>WorkFolders-Server</td><td>Disabled</td></tr>
+<tr><td>Xps-Foundation-Xps-Viewer</td><td>Enabled</td></tr>
+</table>
+<table class="table table-bordered">
+<tr><th>Name</th><th>State</th></tr>
+<tr><td>Accessibility.Braille~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>App.StepsRecorder~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Browser.InternetExplorer~~~~0.0.11.0</td><td>Installed</td></tr>
+<tr><td>DirectX.Configuration.Database~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Downlevel.NLS.Sorting.Versions.Server~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Language.Basic~~~af-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ar-SA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~as-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~az-LATN-AZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ba-RU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~be-BY~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~bg-BG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~bn-BD~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~bn-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~bs-LATN-BA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ca-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~cs-CZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~cy-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~da-DK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~de-CH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~de-DE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~el-GR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~en-AU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~en-CA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~en-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~en-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~en-US~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~es-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~es-MX~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~es-US~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~et-EE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~eu-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~fa-IR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~fi-FI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~fil-PH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~fr-BE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~fr-CA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~fr-CH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~fr-FR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ga-IE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~gd-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~gl-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~gu-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ha-LATN-NG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~haw-US~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~he-IL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~hi-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~hr-HR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~hu-HU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~hy-AM~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~id-ID~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ig-NG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~is-IS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~it-IT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ja-JP~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ka-GE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~kk-KZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~kl-GL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~kn-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ko-KR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~kok-DEVA-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ky-KG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~lb-LU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~lt-LT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~lv-LV~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~mi-NZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~mk-MK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ml-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~mn-MN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~mr-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ms-BN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ms-MY~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~mt-MT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~nb-NO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ne-NP~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~nl-NL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~nn-NO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~nso-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~or-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~pa-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~pl-PL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ps-AF~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~pt-BR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~pt-PT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~rm-CH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ro-RO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ru-RU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~rw-RW~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sah-RU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~si-LK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sk-SK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sl-SI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sq-AL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sr-CYRL-RS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sr-LATN-RS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sv-SE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~sw-KE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ta-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~te-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~tg-CYRL-TJ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~th-TH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~tk-TM~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~tn-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~tr-TR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~tt-RU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ug-CN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~uk-UA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~ur-PK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~uz-LATN-UZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~vi-VN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~wo-SN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~xh-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~yo-NG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~zh-CN~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Language.Basic~~~zh-HK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~zh-TW~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Basic~~~zu-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Arab~~~und-ARAB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Beng~~~und-BENG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Cans~~~und-CANS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Cher~~~und-CHER~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Deva~~~und-DEVA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Ethi~~~und-ETHI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Gujr~~~und-GUJR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Guru~~~und-GURU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Hans~~~und-HANS~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Language.Fonts.Hant~~~und-HANT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Hebr~~~und-HEBR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Jpan~~~und-JPAN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Khmr~~~und-KHMR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Knda~~~und-KNDA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Kore~~~und-KORE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Laoo~~~und-LAOO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Mlym~~~und-MLYM~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Orya~~~und-ORYA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.PanEuropeanSupplementalFonts~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Sinh~~~und-SINH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Syrc~~~und-SYRC~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Taml~~~und-TAML~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Telu~~~und-TELU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Fonts.Thai~~~und-THAI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~af-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~bs-LATN-BA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ca-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~cs-CZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~cy-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~da-DK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~de-DE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~el-GR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~en-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~en-US~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~es-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~es-MX~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~eu-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~fi-FI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~fr-FR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ga-IE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~gd-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~gl-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~hi-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~hr-HR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~id-ID~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~it-IT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ja-JP~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ko-KR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~lb-LU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~mi-NZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ms-BN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ms-MY~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~nb-NO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~nl-NL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~nn-NO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~nso-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~pl-PL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~pt-BR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~pt-PT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~rm-CH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ro-RO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~ru-RU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~rw-RW~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~sk-SK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~sl-SI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~sq-AL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~sr-CYRL-RS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~sr-LATN-RS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~sv-SE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~sw-KE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~tn-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~tr-TR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~wo-SN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~xh-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~zh-CN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~zh-HK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~zh-TW~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Handwriting~~~zu-ZA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~ar-SA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~bg-BG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~bs-LATN-BA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~cs-CZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~da-DK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~de-DE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~el-GR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~en-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~en-US~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~es-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~es-MX~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~fi-FI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~fr-CA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~fr-FR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~hr-HR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~hu-HU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~it-IT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~ja-JP~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~ko-KR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~nb-NO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~nl-NL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~pl-PL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~pt-BR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~pt-PT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~ro-RO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~ru-RU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~sk-SK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~sl-SI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~sr-CYRL-RS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~sr-LATN-RS~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~sv-SE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~tr-TR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~zh-CN~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Language.OCR~~~zh-HK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.OCR~~~zh-TW~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~da-DK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~de-DE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~en-AU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~en-CA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~en-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~en-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~en-US~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~es-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~es-MX~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~fr-CA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~fr-FR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~it-IT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~ja-JP~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~pt-BR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~zh-CN~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Language.Speech~~~zh-HK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.Speech~~~zh-TW~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ar-EG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ar-SA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~bg-BG~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ca-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~cs-CZ~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~da-DK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~de-AT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~de-CH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~de-DE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~el-GR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~en-AU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~en-CA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~en-GB~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~en-IE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~en-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~en-US~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~es-ES~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~es-MX~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~fi-FI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~fr-CA~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~fr-CH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~fr-FR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~he-IL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~hi-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~hr-HR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~hu-HU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~id-ID~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~it-IT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ja-JP~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ko-KR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ms-MY~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~nb-NO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~nl-BE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~nl-NL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~pl-PL~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~pt-BR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~pt-PT~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ro-RO~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ru-RU~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~sk-SK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~sl-SI~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~sv-SE~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~ta-IN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~th-TH~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~tr-TR~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~vi-VN~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~zh-CN~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Language.TextToSpeech~~~zh-HK~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Language.TextToSpeech~~~zh-TW~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>MathRecognizer~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Media.WindowsMediaPlayer~~~~0.0.12.0</td><td>Installed</td></tr>
+<tr><td>Microsoft.Onecore.StorageManagement~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Microsoft.Windows.MSPaint~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Microsoft.Windows.Notepad~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Microsoft.Windows.PowerShell.ISE~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Microsoft.Windows.StorageManagement~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Microsoft.Windows.WordPad~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>Msix.PackagingTool.Driver~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>NetFX3~~~~</td><td>NotPresent</td></tr>
+<tr><td>OpenSSH.Client~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>OpenSSH.Server~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Print.EnterpriseCloudPrint~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Print.Management.Console~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Print.MopriaCloudService~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>RIP.Listener~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>ServerCore.AppCompatibility~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Tools.Graphics.DirectX~~~~0.0.1.0</td><td>NotPresent</td></tr>
+<tr><td>Windows.Client.ShellComponents~~~~0.0.1.0</td><td>Installed</td></tr>
+<tr><td>XPS.Viewer~~~~0.0.1.0</td><td>Installed</td></tr>
+</table>
+  </div>
+ </body>
+</html>

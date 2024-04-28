@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maple</title>
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
+    <!--[if lt IE 9]>
+      <script src="javascript/html5shiv.min.js"></script>
+      <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+    <script src="javascript/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+  </head>
+ <body>
+<a href="https://www.maplesoft.com/download/">Software Downloads</a><br />
+<a href="https://www.maplesoft.com/support/downloads/">Service Packs Downloads</a><br />
+最好使用带更新的完整安装包安装，故全网搜寻以下文件:<br />
+<pre>Maple18.02WindowsX64Installer.exe
+Maple18.02WindowsX86Installer.exe
+Maple2015.2WindowsX64Installer.exe
+Maple2015.2WindowsX86Installer.exe
+Maple2016.2WindowsX64Installer.exe
+Maple2016.2WindowsX86Installer.exe</pre>
+<table border=1>
+<tr><td>Version</td><td>Release Date</td><td>Installation/Latest Updates Information</td></tr>
+<tr><td>Maple 11.02(330022)</td><td>Sat Nov 10 09:15:04 EST 2007</td><td>https://www.maplesoft.com/documentation_center/maple11/install.html</td></tr>
+<tr><td>Maple 12.02(377066)</td><td>Thu Dec 11 01:58:10 EST 2008</td><td>https://www.maplesoft.com/documentation_center/maple12/install.html</td></tr>
+<tr><td>Maple 13.02(464521)</td><td>Tue Feb 16 12:25:10 EST 2010</td><td>https://www.maplesoft.com/support/install/maple13_install.html</td></tr>
+<tr><td>Maple 14.01(536926)</td><td>Tue Oct 19 20:20:07 EDT 2010</td><td>https://www.maplesoft.com/support/install/maple14_install.html</td></tr>
+<tr><td>Maple 15.01(639727)</td><td>Wed Jun 8 11:08:02 EDT 2011</td><td>https://www.maplesoft.com/support/install/maple15_install.html</td></tr>
+<tr><td>Maple 16.02a(788210)</td><td>Mon Nov 19 00:02:01 EST 2012</td><td>https://www.maplesoft.com/support/install/maple16_install.html</td></tr>
+<tr><td>Maple 17.02(872941)</td><td>Thu Sep 5 21:02:37 EDT 2013</td><td>https://www.maplesoft.com/support/install/maple17_install.html</td></tr>
+<tr><td>Maple 18.02(991181)</td><td>Tue Oct 28 14:02:24 EDT 2014</td><td>https://www.maplesoft.com/support/install/maple18_install.html</td></tr>
+<tr><td>Maple 2015.2a(1097895)</td><td>Mon Dec 21 00:14:42 EST 2015</td><td>https://www.maplesoft.com/support/install/maple2015_install.html<br />https://www.maplesoft.com/support/downloads/m2015_2aupdate.aspx</td></tr>
+<tr><td>Maple 2016.2(1194701)</td><td>Fri Jan 13 02:34:11 EST 2017</td><td>https://www.maplesoft.com/support/install/maple2016_install.html<br />https://www.maplesoft.com/support/downloads/m2016_2update.aspx</td></tr>
+<tr><td>Maple 2017.3(1265877)</td><td>Wed Sep 27 18:24:35 EDT 2017</td><td>https://www.maplesoft.com/support/install/maple2017_install.html<br />https://www.maplesoft.com/support/downloads/m2017_3update.aspx</td></tr>
+<tr><td>Maple 2018.2.1(1362973)</td><td>Fri Nov 16 09:04:23 EST 2018</td><td>https://www.maplesoft.com/support/install/2018/Maple2018-Install.html<br />https://www.maplesoft.com/support/downloads/m2018_2_1update.aspx</td></tr>
+<tr><td>Maple 2019.2.1(1435526)</td><td>Tue Nov 26 08:15:56 EST 2019</td><td>https://www.maplesoft.com/support/install/2019/Maple/Install.html<br />https://www.maplesoft.com/support/downloads/m2019_2_1update.aspx</td></tr>
+<tr><td>Maple 2020.2(1502365)</td><td>Wed Nov 11 07:02:35 EST 2020</td><td>https://www.maplesoft.com/support/install/2020/Maple/Install.html<br />https://www.maplesoft.com/support/downloads/m2020_2update.aspx</td></tr>
+<tr><td>Maple 2021.2(1576349)</td><td>Tue Nov 23 23:43:01 EST 2021</td><td>https://www.maplesoft.com/support/install/2021/Maple/Install.html<br />[Windows/Linux]https://www.maplesoft.com/support/downloads/m2021_2update.aspx</td></tr>
+<tr><td>Maple 2021.2.1(1590101)</td><td></td><td>https://www.maplesoft.com/support/install/2021/Maple/Install.html<br />[macOS]https://www.maplesoft.com/support/downloads/m2021_2_1update.aspx</td></tr>
+<tr><td>Maple 2022.2(1657361)</td><td>Sun Oct 23 22:39:50 EDT 2022</td><td>https://www.maplesoft.com/support/install/2022/Maple/Install.html<br />https://www.maplesoft.com/support/downloads/m2022_2update.aspx</td></tr>
+<tr><td>Maple 2023.2.1(1762575)</td><td>Fri Nov 24 02:12:49 EST 2023</td><td>https://www.maplesoft.com/support/install/2023/Maple/Install.html<br />https://www.maplesoft.com/support/downloads/m2023_2_1update.aspx</td></tr>
+<tr><td>Maple 2024.0(1794891)</td><td>Fri Mar 1 12:11:31 EST 2024</td><td>https://www.maplesoft.com/support/install/2024/Maple/Install.html</td></tr>
+</table>
+<br />
+Maple 2018起内置Python。<br />
+Maple 2018:<br />
+<pre>>python --version
+Python 3.6.2
+>python -m pip list
+Package        Version
+-------------- -------
+beautifulsoup4 4.6.0
+numpy          1.13.3
+pip            9.0.1
+setuptools     28.8.0</pre>
+Maple 2019:<br />
+<pre>>python --version
+Python 3.7.4
+>python -m pip list
+Package        Version
+-------------- -------
+absl-py        0.8.0
+astor          0.8.0
+beautifulsoup4 4.8.0
+bleach         3.1.0
+enum34         1.1.6
+FMPy           0.2.12
+gast           0.2.2
+google         2.0.2
+grpcio         1.23.0
+html5lib       1.0.1
+latex2mathml   2.7.1
+lxml           4.4.1
+Markdown       3.1.1
+numpy          1.17.1
+pathlib        1.0.1
+pip            19.2.3
+protobuf       3.9.1
+pywin32        224
+scipy          1.3.1
+setuptools     41.2.0
+six            1.12.0
+soupsieve      1.9.3
+termcolor      1.1.0
+webencodings   0.5.1
+Werkzeug       0.15.6
+wheel          0.33.6</pre>
+Maple 2020:<br />
+<pre>>python --version
+Python 3.7.6
+>python -m pip list
+Package              Version
+-------------------- -------
+absl-py              0.9.0
+astor                0.8.1
+beautifulsoup4       4.8.2
+bleach               3.1.0
+enum34               1.1.6
+FMPy                 0.2.12
+gast                 0.2.2
+google               2.0.3
+google-pasta         0.1.8
+grpcio               1.26.0
+h5py                 2.10.0
+html5lib             1.0.1
+Keras-Applications   1.0.8
+Keras-Preprocessing  1.1.0
+latex2mathml         2.8.0
+lxml                 4.4.2
+Markdown             3.1.1
+numpy                1.18.1
+opt-einsum           3.1.0
+pathlib              1.0.1
+pip                  19.3.1
+protobuf             3.11.2
+pywin32              227
+scipy                1.4.1
+setuptools           45.0.0
+six                  1.14.0
+soupsieve            1.9.5
+tensorboard          1.15.0
+tensorflow           1.15.0
+tensorflow-estimator 1.15.1
+termcolor            1.1.0
+webencodings         0.5.1
+Werkzeug             0.16.0
+wheel                0.33.6
+wrapt                1.11.2</pre>
+Maple 2021:<br />
+<pre>>python --version
+Python 3.8.3
+>python -m pip list
+Package                Version
+---------------------- ---------
+absl-py                0.9.0
+astor                  0.8.1
+astunparse             1.6.3
+beautifulsoup4         4.9.1
+bleach                 3.1.5
+cachetools             4.1.1
+certifi                2020.6.20
+chardet                3.0.4
+enum34                 1.1.10
+FMPy                   0.2.12
+gast                   0.3.3
+google                 2.0.3
+google-auth            1.18.0
+google-auth-oauthlib   0.4.1
+google-pasta           0.2.0
+grpcio                 1.30.0
+h5py                   2.10.0
+html5lib               1.1
+idna                   2.10
+Keras-Preprocessing    1.1.2
+latex2mathml           2.8.0
+lxml                   4.5.1
+Markdown               3.2.2
+numpy                  1.19.0
+oauthlib               3.1.0
+opt-einsum             3.2.1
+packaging              20.4
+pathlib                1.0.1
+pip                    20.1.1
+protobuf               3.12.2
+pyasn1                 0.4.8
+pyasn1-modules         0.2.8
+pyparsing              2.4.7
+pywin32                228
+requests               2.24.0
+requests-oauthlib      1.3.0
+rsa                    4.6
+scipy                  1.4.1
+setuptools             47.3.1
+six                    1.15.0
+soupsieve              2.0.1
+tensorboard            2.2.2
+tensorboard-plugin-wit 1.7.0
+tensorflow             2.2.0
+tensorflow-estimator   2.2.0
+termcolor              1.1.0
+urllib3                1.25.9
+webencodings           0.5.1
+Werkzeug               1.0.1
+wheel                  0.34.2
+wrapt                  1.12.1</pre>
+Maple 2022:<br />
+<pre>>python --version
+Python 3.8.10
+>python -m pip list
+Package                 Version
+----------------------- -------------------
+absl-py                 0.10.0
+astor                   0.8.1
+astunparse              1.6.3
+beautifulsoup4          4.9.1
+bleach                  3.1.5
+cachetools              4.2.2
+certifi                 2021.5.30
+chardet                 4.0.0
+enum34                  1.1.10
+flatbuffers             1.12
+FMPy                    0.2.12
+gast                    0.4.0
+google                  2.0.3
+google-auth             1.30.1
+google-auth-oauthlib    0.4.4
+google-pasta            0.2.0
+grpcio                  1.34.0
+h5py                    3.1.0
+html5lib                1.1
+idna                    2.10
+keras-nightly           2.5.0.dev2021032900
+Keras-Preprocessing     1.1.2
+latex2mathml            2.8.0
+lxml                    4.6.3
+Markdown                3.2.2
+numpy                   1.19.2
+oauthlib                3.1.0
+opt-einsum              3.3.0
+packaging               20.9
+pathlib                 1.0.1
+pip                     20.1.1
+protobuf                3.12.2
+pyasn1                  0.4.8
+pyasn1-modules          0.2.8
+pyparsing               2.4.7
+pywin32                 301
+requests                2.25.1
+requests-oauthlib       1.3.0
+rsa                     4.7.2
+scipy                   1.6.3
+setuptools              47.3.1
+six                     1.15.0
+soupsieve               2.2.1
+tensorboard             2.5.0
+tensorboard-data-server 0.6.1
+tensorboard-plugin-wit  1.8.0
+tensorflow              2.5.0
+tensorflow-estimator    2.5.0
+termcolor               1.1.0
+typing-extensions       3.7.4.3
+urllib3                 1.26.5
+webencodings            0.5.1
+Werkzeug                1.0.1
+wheel                   0.35.0
+wrapt                   1.12.1</pre>
+Maple 2023:<br />
+<pre>>python --version
+Python 3.10.8
+>python -m pip list
+Package                      Version
+---------------------------- -----------
+absl-py                      1.3.0
+astunparse                   1.6.3
+attrs                        22.1.0
+beautifulsoup4               4.11.1
+bleach                       5.0.1
+cachetools                   5.2.0
+certifi                      2022.9.24
+charset-normalizer           2.1.1
+flatbuffers                  22.10.26
+FMPy                         0.3.12
+gast                         0.4.0
+google-auth                  2.14.1
+google-auth-oauthlib         0.4.6
+google-pasta                 0.2.0
+grpcio                       1.50.0
+h5py                         3.7.0
+html5lib                     1.1
+idna                         3.4
+Jinja2                       3.1.2
+keras                        2.10.0
+Keras-Preprocessing          1.1.2
+lark-parser                  0.12.0
+latex2mathml                 2.8.0
+libclang                     14.0.6
+lxml                         4.9.1
+Markdown                     3.4.1
+MarkupSafe                   2.1.1
+msgpack                      1.0.4
+numpy                        1.23.4
+oauthlib                     3.2.2
+opt-einsum                   3.3.0
+packaging                    21.3
+pip                          22.3.1
+protobuf                     3.19.6
+pyasn1                       0.4.8
+pyasn1-modules               0.2.8
+pyparsing                    3.0.9
+pytz                         2022.6
+pywin32                      305
+requests                     2.28.1
+requests-oauthlib            1.3.1
+rsa                          4.9
+scipy                        1.9.3
+setuptools                   65.5.1
+six                          1.16.0
+soupsieve                    2.3.2.post1
+tensorboard                  2.10.1
+tensorboard-data-server      0.6.1
+tensorboard-plugin-wit       1.8.1
+tensorflow                   2.10.1
+tensorflow-estimator         2.10.0
+tensorflow-io-gcs-filesystem 0.27.0
+termcolor                    2.1.0
+typing_extensions            4.4.0
+urllib3                      1.26.12
+webencodings                 0.5.1
+Werkzeug                     2.2.2
+wheel                        0.38.4
+wrapt                        1.14.1</pre>
+Maple 2024:<br />
+<pre>>python --version
+Python 3.11.6
+>python -m pip list
+Package                      Version
+---------------------------- ------------
+absl-py                      2.0.0
+astunparse                   1.6.3
+attrs                        23.1.0
+beautifulsoup4               4.11.1
+bleach                       5.0.1
+cachetools                   5.3.2
+certifi                      2023.7.22
+charset-normalizer           3.3.2
+flatbuffers                  23.5.26
+FMPy                         0.3.19
+gast                         0.5.4
+google-auth                  2.23.4
+google-auth-oauthlib         1.0.0
+google-pasta                 0.2.0
+grpcio                       1.59.2
+h5py                         3.10.0
+html5lib                     1.1
+idna                         3.4
+Jinja2                       3.1.2
+keras                        2.14.0
+lark                         1.1.8
+latex2mathml                 2.8.0
+libclang                     16.0.6
+lxml                         4.9.3
+Markdown                     3.4.1
+MarkupSafe                   2.1.3
+ml-dtypes                    0.2.0
+msgpack                      1.0.7
+numpy                        1.26.2
+oauthlib                     3.2.2
+opt-einsum                   3.3.0
+packaging                    23.2
+pip                          22.3.1
+protobuf                     4.25.0
+pyasn1                       0.5.0
+pyasn1-modules               0.3.0
+pytz                         2023.3.post1
+pywin32                      306
+requests                     2.31.0
+requests-oauthlib            1.3.1
+rsa                          4.9
+scipy                        1.11.3
+setuptools                   68.2.2
+six                          1.16.0
+soupsieve                    2.5
+tensorboard                  2.14.0
+tensorboard-data-server      0.7.2
+tensorflow                   2.14.0
+tensorflow-estimator         2.14.0
+tensorflow-intel             2.14.0
+tensorflow-io-gcs-filesystem 0.31.0
+termcolor                    2.1.0
+typing_extensions            4.8.0
+urllib3                      2.1.0
+webencodings                 0.5.1
+Werkzeug                     3.0.1
+wheel                        0.41.3
+wrapt                        1.14.1</pre>
+<br />
+<pre>https://www.cbctc.puc-rio.br/maple/11/linux/Maple11Linux32Installer.bin
+https://www.cbctc.puc-rio.br/maple/11/mac/Maple11MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/11/win32/Maple11WindowsInstaller.exe
+https://www.cbctc.puc-rio.br/maple/12/linux/Maple12Linux32Installer.bin
+https://www.cbctc.puc-rio.br/maple/12/mac/Maple12MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/12/win32/Maple12WindowsInstaller.exe
+https://www.cbctc.puc-rio.br/maple/13/linux/Maple1301Linux32Installer.bin
+https://www.cbctc.puc-rio.br/maple/13/mac/Maple13MacInstaller.app.zip
+https://www.cbctc.puc-rio.br/maple/13/win32/Maple13WindowsInstaller.exe
+https://www.cbctc.puc-rio.br/maple/14/linux/Maple14Linux32Installer.bin
+https://www.cbctc.puc-rio.br/maple/14/linux/Maple14LinuxX86_64Installer.bin
+https://www.cbctc.puc-rio.br/maple/14/mac/Maple14MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/14/win32/Maple14WindowsInstaller.exe
+https://www.cbctc.puc-rio.br/maple/15/linux/Maple15Linux32Installer.bin
+https://www.cbctc.puc-rio.br/maple/15/linux/Maple15LinuxX86_64Installer.bin
+https://www.cbctc.puc-rio.br/maple/15/mac/Maple15MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/15/win32/Maple15WindowsInstaller.exe
+https://www.cbctc.puc-rio.br/maple/16/linux/Maple16Linux32Installer.bin
+https://www.cbctc.puc-rio.br/maple/16/linux/Maple16LinuxX86_64Installer.bin
+https://www.cbctc.puc-rio.br/maple/16/mac/Maple16MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/16/win32/Maple16WindowsInstaller.exe
+https://www.cbctc.puc-rio.br/maple/17/linux/Maple17Linux32Installer.bin
+https://www.cbctc.puc-rio.br/maple/17/linux/Maple17LinuxX86_64Installer.bin
+https://www.cbctc.puc-rio.br/maple/17/mac/Maple17MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/17/win32/Maple17WindowsInstaller.exe
+https://www.cbctc.puc-rio.br/maple/18/linux/Maple18LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/18/linux/Maple18LinuxX86Installer.zip
+https://www.cbctc.puc-rio.br/maple/18/mac/Maple18MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/18/win32/Maple18WindowsX86Installer.exe
+https://www.cbctc.puc-rio.br/maple/2015/linux/Maple2015.1LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2015/linux/Maple2015.1LinuxX86Installer.zip
+https://www.cbctc.puc-rio.br/maple/2015/mac/Maple2015.1MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2015/win32/Maple2015.1WindowsX86Installer.exe
+https://www.cbctc.puc-rio.br/maple/2016/linux/Maple2016.1LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2016/mac/Maple2016.1MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2016/win32/Maple2016.1WindowsX86Installer.exe
+https://www.cbctc.puc-rio.br/maple/2016/win64/Maple2016.1WindowsX64Installer.exe
+https://www.cbctc.puc-rio.br/maple/2017/linux/Maple2017.3LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2017/mac/Maple2017.3MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2017/win32/Maple2017.3WindowsX86Installer.exe
+https://www.cbctc.puc-rio.br/maple/2017/win64/Maple2017.3WindowsX64Installer.exe
+https://www.cbctc.puc-rio.br/maple/2018/linux/Maple2018.2LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2018/mac/Maple2018.2MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2018/win32/Maple2018.2WindowsX86Installer.exe
+https://www.cbctc.puc-rio.br/maple/2018/win64/Maple2018.2WindowsX64Installer.exe
+https://www.cbctc.puc-rio.br/maple/2019/linux/Maple2019.2LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2019/mac/Maple2019.2MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2019/win32/Maple2019.2WindowsX86Installer.exe
+https://www.cbctc.puc-rio.br/maple/2019/win64/Maple2019.2WindowsX64Installer.exe
+https://www.cbctc.puc-rio.br/maple/2020/linux/Maple2020.2LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2020/mac/Maple2020.2MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2020/win32/Maple2020.2WindowsX86Installer.exe
+https://www.cbctc.puc-rio.br/maple/2020/win64/Maple2020.2WindowsX64Installer.exe
+https://www.cbctc.puc-rio.br/maple/2021/linux/Maple2021.1LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2021/mac/Maple2021.1MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2021/win64/Maple2021.1WindowsX64Installer.exe
+https://www.cbctc.puc-rio.br/maple/2022/linux/Maple2022.2LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2022/mac/Maple2022.2MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2022/win64/Maple2022WindowsX64Installer.exe
+https://www.cbctc.puc-rio.br/maple/2023/linux/Maple2023.2LinuxX64Installer.zip
+https://www.cbctc.puc-rio.br/maple/2023/mac/Maple2023.2MacInstaller.zip
+https://www.cbctc.puc-rio.br/maple/2023/win64/Maple2023.2WindowsX64Installer.exe</pre>
+<pre>https://downloads.academicsoftware.eu/Maple/Maple2020.2LinuxX64Installer.run
+https://downloads.academicsoftware.eu/Maple/Maple2020.2MacInstaller.dmg
+https://downloads.academicsoftware.eu/Maple/Maple2020.2WindowsX64Installer.exe
+https://downloads.academicsoftware.eu/Maple/Maple2021.2LinuxX64Installer.run
+https://downloads.academicsoftware.eu/Maple/Maple2021.2MacInstaller.dmg
+https://downloads.academicsoftware.eu/Maple/Maple2021.2WindowsX64Installer.exe</pre>
+<pre>autoupdate-windows.exe --mode unattended --unattendedmodebehavior download --settings_file "c:\Downloads\update.ini" --debuglevel 2
+Usage:
+
+ --help                                                  Display the list of valid options
+
+ --unattendedmodeui <unattendedmodeui>                   Unattended Mode UI
+                                                         Default: none
+                                                         Allowed: none minimal minimalWithDialogs
+
+ --debuglevel <debuglevel>                               Debug information level of verbosity
+                                                         Default: 2
+                                                         Allowed: 0 1 2 3 4
+
+ --settings_file <settings_file>                         Path to the local settings file, containing the HTTP URL to update and the current version ID.
+                                                         Default: C:\Program Files (x86)\Maple 2015\update/update.ini
+
+ --url <url>                                             HTTP URL that points to the xml file containing the update data.
+                                                         Default: 
+
+ --version_id <version_id>                               Version ID of the local installation.
+                                                         Default: 
+
+ --update_download_location <update_download_location>   Path where the downloaded files will be stored.
+                                                         Default: ~/.bitrock/updates
+
+ --check_for_updates <check_for_updates>                 Boolean value to specify whether to check for updates or not.
+                                                         Default: 1</pre>
+Maple 18 x86<br />
+<pre>[Update]
+url = http://update.maplesoft.com/update.php?uuid=5b20b1f0-e494-42f6-bde5-37843eb52159
+version_id = 922027
+check_for_updates = 1
+update_download_location = C:\Users\Administrator\AppData\Local\Temp</pre>
+Maple 18 x64<br />
+<pre>[Update]
+url = http://update.maplesoft.com/update.php?uuid=86c43ef5-8078-4c40-80ee-3b2ba9d434a0
+version_id = 922027
+check_for_updates = 1
+update_download_location = C:\Users\Administrator\AppData\Local\Temp</pre>
+Maple 2015 x86<br />
+<pre>[Update]
+url = http://update.maplesoft.com/update.php?uuid=1ad9732c-eef4-472d-b4cb-17830d2446f7
+version_id = 1022128
+check_for_updates = 1
+update_download_location = C:\Users\Administrator\AppData\Local\Temp</pre>
+Maple 2015 x64<br />
+<pre>[Update]
+url = http://update.maplesoft.com/update.php?uuid=2d3257c9-a74f-499b-9dff-21a5ff42b9c2
+version_id = 1022128
+check_for_updates = 1
+update_download_location = C:\Users\Administrator\AppData\Local\Temp</pre>
+Maple 2016 x86<br />
+<pre>[Update]
+url = http://update.maplesoft.com/update.php?uuid=c496c3d2-2d68-4569-865d-141543ab3e89
+version_id = 1113130
+check_for_updates = 1
+update_download_location = C:\Users\Administrator\AppData\Local\Temp</pre>
+Maple 2016 x64<br />
+<pre>[Update]
+url = http://update.maplesoft.com/update.php?uuid=2e7a098e-5b82-43ed-8ad5-05fb62459af1
+version_id = 1113130
+check_for_updates = 1
+update_download_location = C:\Users\Administrator\AppData\Local\Temp</pre>
+ </body>
+</html>
